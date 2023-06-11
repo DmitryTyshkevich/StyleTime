@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container my-5"><br>
+    <h1 class="text-center mb-5">Каталог часов</h1>
+    <div class="row">
+      {% for model in casio %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ model.name }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <a href="#" class="btn btn-primary">Купить за {{ model.price }} руб.</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
