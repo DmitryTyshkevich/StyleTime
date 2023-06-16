@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from cart.forms import CartAddProductForm
 
 
 # def index(request):
@@ -14,7 +15,9 @@ def catalogue(request, producer):
 
 
 def watch(request, producer, pk):
+    cart_product_form = CartAddProductForm()
     product = Product.objects.get(pk=pk)
     features = Features.objects.get(product=pk)
-    return render(request, 'shop/watch.html', {'product': product, 'features': features})
+    return render(request, 'shop/watch.html', {'product': product, 'features': features,
+                                               'cart_product_form': cart_product_form})
 

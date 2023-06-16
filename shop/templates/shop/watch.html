@@ -3,52 +3,60 @@
 {% block title %} {{product.model}} {% endblock title %}
 
 {% block content %}
-<div class="container">
+<div class="container my-5">
+  <table class="table">
+    <tr>
+      <th>
+        <img src="{{ product.image.url }}" alt="{{ model }}">
+        <h4 align="center">{{product.model}}</h4>
+        <p>
+          <h6 align="center">{{product.collection}}</h6>
+        </p>
+      </th>
+      <th>
+        <h4 align="center">Описание:</h4>
+        <p>
+          <em>{{product.description}}</em>
+        </p>
+      </th>
+  </table>
   <div class="container my-5" align="center"><br>
-    <img src="{{ product.image.url }}" alt="{{ model }}">
-    <h4 align="center">{{product.model}}</h4>
-    <p>
-    <h6 align="center">{{product.collection}}</h6>
-    <h3 align="center"><em>{{ product.price }} руб.</em></h3>
-    </p>
-    <a href="#" class="btn btn-light">В корзину</a>
-    <h3 align="center">Описание:</h3>
-    <p align="center">
-      <em>{{product.description}}</em>
-    </p>
+    <h3 align="center"><em>Цена: {{ product.price }} руб.</em></h3>
+    <form action="{% url 'cart:cart_add' product.pk %}" method="post">
+      {{ cart_product_form }}
+      {% csrf_token %}
+      <input type="submit" value="В корзину" class="btn btn-outline-secondary">
+    </form>
+    <!--    <a href="#" class="btn btn-light">В корзину</a>-->
   </div>
-</div>
+  <div class="container">
+    <table class="table table-striped">
+      <h4 align="center">Характеристики:</h4>
+      <tr>
+        <th>Тип</th>
+        <th>Водозащита</th>
+        <th>Вес (г)</th>
+        <th>Габариты</th>
+        <th>Отображение даты</th>
+        <th>Циферблат</th>
+        <th>Материал корпуса</th>
+        <th>Материал браслета</th>
+        <th>Стекло</th>
+        <th>Коллекция</th>
 
-<table class="table table-striped">
-  <h4 align="center">Характеристики:</h4>
-  <tr>
-    <th>Тип</th>
-    <th>Водозащита</th>
-    <th>Вес (г)</th>
-    <th>Габариты</th>
-    <th>Отображение даты</th>
-    <th>Циферблат</th>
-    <th>Материал корпуса</th>
-    <th>Материал браслета</th>
-    <th>Стекло</th>
-    <th>Коллекция</th>
-
-  </tr>
-  <tr>
-    <td>{{ features.type }}</td>
-    <td>{{ features.waterproof }}</td>
-    <td>{{ features.weight }}</td>
-    <td>{{ features.dimensions }}</td>
-    <td>{{ features.date_display }}</td>
-    <td>{{ features.dial }}</td>
-    <td>{{ features.case_material }}</td>
-    <td>{{ features.bracelet_material }}</td>
-    <td>{{ features.glass }}</td>
-    <td>{{ product.collection }}</td>
-  </tr>
-</table>
-
-
-
-
-{% endblock content %}
+      </tr>
+      <tr>
+        <td>{{ features.type }}</td>
+        <td>{{ features.waterproof }}</td>
+        <td>{{ features.weight }}</td>
+        <td>{{ features.dimensions }}</td>
+        <td>{{ features.date_display }}</td>
+        <td>{{ features.dial }}</td>
+        <td>{{ features.case_material }}</td>
+        <td>{{ features.bracelet_material }}</td>
+        <td>{{ features.glass }}</td>
+        <td>{{ product.collection }}</td>
+      </tr>
+    </table>
+  </div>
+  {% endblock content %}
