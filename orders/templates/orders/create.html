@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Оформление заказа {% endblock title %}
+{% block content %}
+<h1>Checkout</h1>
+
+<div class="col-md-3 offset-md-2">
+  <div class="order-info">
+    <h3>Ваш заказ:</h3>
+    <ol>
+      {% for item in cart %}
+      <li>
+        {{ item.product }} - {{ item.quantity }} шт.
+        <span>{{ item.total_price }} руб.</span>
+      </li>
+      {% endfor %}
+    </ol>
+    <p>Итого: {{ cart.get_total_price }} руб.</p>
+  </div>
+  <form action="." method="post" class="order-form">
+    {{ form.as_p }}
+    <p><input class="btn btn-primary" type="submit" value="Разместить заказ"></p>
+    {% csrf_token %}
+  </form>
+
+</div>
+
+{% endblock %}

@@ -11,13 +11,14 @@ from .forms import CartAddProductForm
 def cart_add(request, pk):
     cart = Cart(request)
     product = get_object_or_404(Product, pk=pk)
+    producer = product.model.split()[0]
     form = CartAddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-    return redirect('cart:cart_detail')
+    return redirect('shop:watch', producer=producer, pk=pk)
 
 
 def cart_remove(request, pk):
@@ -28,6 +29,8 @@ def cart_remove(request, pk):
 
 
 def cart_detail(request):
-    manufacture = Manufacture.objects.all()
     cart = Cart(request)
-    return render(request, 'cart/detail.html', {'cart': cart})
+    if cart:
+        return render(request, 'cart/detail.html', {'cart': cart})
+    else:
+        return render(request, 'cart/cart_empty.html')
