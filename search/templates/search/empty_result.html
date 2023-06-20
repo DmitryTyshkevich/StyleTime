@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Результат поиска{% endblock %}
+
+{% block content %}
+  <div class="container my-5">
+    <h2 align="center">По вашему запросу ничего не найдено!</h2>
+    <p class="text-right" align="center">
+      <img src="{% static 'images/glass.jpg' %}" alt="Image" style="width: 40%; height: auto;">
+
+    </p>
+  </div>
+
+{% endblock content%}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Результат поиска {% endblock title %}
+
+{% block content %}
+<div class="container my-5"><br>
+  <div class="row">
+    {% for model in products %}
+    {% with brand=model|slice:":0"|safe %}
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+      <div class="col" align="center">
+        <a class="image-button" href="{% url 'shop:watch' brand  model.pk %}">
+          <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">
+        </a><br>
+        <div class="card border-0">
+          <h6 class="card-title"><em>{{ model.model }}</em></h6>
+          <span>
+                <em>{{ model.collection }}</em>
+              </span>
+          <!--              <p class="card-text">{{ model.description }}</p>-->
+          <h4 class="card-title">{{ model.price }} руб. </h4>
+          <!--              <a href="#" class="btn btn-primary mb-2">Купить за {{ model.price }} руб.</a>-->
+          <!--              <a href="#" class="btn btn-light ">В корзину</a>-->
+        </div>
+      </div>
+
+    </div>
+    {% endwith %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
