@@ -20,6 +20,6 @@ def order_create(request):
             return render(request, 'orders/created.html',
                           {'order': order})
     else:
-        form = OrderCreateForm
+        form = OrderCreateForm()
     return render(request, 'orders/create.html',
                   {'cart': cart, 'form': form})

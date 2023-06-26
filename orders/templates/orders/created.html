@@ -1,9 +1,21 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Thank you{% endblock %}
 
 {% block content %}
-    <h1>Спасибо!</h1>
-    <p>Ваш заказ успешно завершен. Номер вашего заказа
-        <strong>{{ order.id }}</strong>.</p>
+<div class="container my-5">
+
+<!--    <p align="center">-->
+<!--      <a href="{% url 'index' %}" class="btn btn-primary">Продолжить покупки</a>-->
+<!--    </p>-->
+    <p class="text-right" align="center">
+      <img src="{% static 'images/order_ok.png' %}" alt="Image" style="width: 45%; height: auto;">
+  </p>
+  <h2 align="center" style="color:#3cb371">Спасибо!</h2>
+  <p align="center">Ваш заказ успешно оформлен. Мы свяжемся с вами в ближайшее время.</p>
+  <p align="center">Номер вашего заказа
+        <strong>#{{ order.id }}</strong>.</p>
+  </div>
+
+
 {% endblock %}

@@ -1,27 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} {{brand.brand}} {% endblock title %}
+{% block title %} Весь товар {% endblock title %}
 
 {% block content %}
-
-<div class="container my-5"><br>
-  <img src="{{ brand.image_brand.url }}" class="img-fluid" alt="...">
-  <div class="brand-page">
-    <div class="brand-page-list">
-      <div class="brand-page-list__desc"><br>
-        <p>
-          <em style="color:#787878">{{brand.description}}</em>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="container my-5"><br>
   <div class="row">
     {% for model in products %}
+    {% with brand=model|slice:":0"|safe %}
     <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
       <div class="col" align="center">
-        <a class="image-button" href="{% url 'shop:watch' brand.brand  model.pk %}">
+        <a class="image-button" href="{% url 'shop:watch' brand  model.pk %}">
           <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">
         </a><br>
         <div class="card border-0">
@@ -37,6 +25,7 @@
       </div>
 
     </div>
+    {% endwith %}
     {% endfor %}
   </div>
 </div>

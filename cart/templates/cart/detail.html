@@ -22,7 +22,7 @@
           <img src="{{ product.image.url }}" style="width: 35%; height: auto;">
 
         </a><br>
-        <a href="{% url 'cart:cart_remove' product.pk %}">Удалить</a>
+        <a href="{% url 'cart:cart_remove' product.pk %}" style="color:#3c3c3c">Удалить</a>
       </td>
       <td>{{ product.model }}</td>
       <td>{{ item.quantity }}</td>
@@ -32,9 +32,11 @@
     {% endwith %}
     {% endfor %}
     <tr class="total">
-      <td>Итого:</td>
+      <td>
+        <h4 style="color:#ff4947">Итого:</h4>
+      </td>
       <td colspan="3"></td>
-      <td class="num">{{ cart.get_total_price }} руб.</td>
+      <td class="num" style="color:#ff4947"> <h4>{{ cart.get_total_price }} руб.</h4></td>
     </tr>
     </tbody>
   </table>

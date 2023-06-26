@@ -5,16 +5,16 @@
 
 <div class="col-md-3 offset-md-2">
   <div class="order-info">
-    <h3>Ваш заказ:</h3>
+    <h3 style="color:#3cb371">Ваш заказ:</h3>
     <ol>
       {% for item in cart %}
       <li>
-        {{ item.product }} - {{ item.quantity }} шт.
+        <b>{{ item.product }}</b> - <em>{{ item.quantity }}шт.</em>
         <span>{{ item.total_price }} руб.</span>
       </li>
       {% endfor %}
     </ol>
-    <p>Итого: {{ cart.get_total_price }} руб.</p>
+    <h5 style="color:#ff4947">Итого: {{ cart.get_total_price }} руб.</h5>
   </div>
   <form action="." method="post" class="order-form">
     {{ form.as_p }}

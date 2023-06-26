@@ -3,28 +3,33 @@
 {% block title %} Главная страница {% endblock title %}
 
 {% block content %}
-<div class="container">
-  <img src="{% static 'images/watch.jpg' %}" class="img-fluid" alt="...">
+
+<div class="container my-5">
+  <img src="{% static 'images/start.jpg' %}" class="img-fluid" alt="...">
 </div>
 <div class="container">
-  <h1 align="center">Мужские наручные часы – важнейший аксессуар современного мужчины</h1>
-  <p><h6>Мужчины любят все вокруг контролировать. Контроль над чувствами, контроль над окружающими,
-  контроль над временем - это основные правила выживания в современном мире. Надежные наручные часы помогут любому
-  представителю сильного пола подчинить себе каждую секунду своей жизни</h6></p>
+  <h1 align="center">Наручные часы – важнейший аксессуар современного мужчины</h1>
+  <p>
+  <h5 style="text-indent: 2em; color:#696969">
+    <em>Мужчины любят все вокруг контролировать. Контроль над чувствами, контроль над окружающими,
+    контроль над временем - это основные правила выживания в современном мире. Надежные наручные часы помогут любому
+    представителю сильного пола подчинить себе каждую секунду своей жизни</em>
+  </h5>
+  <p>
 </div>
 
 <div class="container my-5">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
     {% for brand in manufacture %}
     <div class="col" align="center">
-      <div class="card border-0" style="width: 85%; height: auto;">
+      <div class="card border-0" style="width: 70%; height: auto;">
         <a class="image-button" href="{% url 'shop:catalogue' brand.brand %}">
           <img src="{{ brand.image.url }}" class="card-img-top" alt="..."/>
         </a>
         <div class="card-body">
           <a href="{% url 'shop:catalogue' brand.brand %}"
-                  class="btn btn-outline-dark">
-            Перейти в каталог</a>
+             class="btn btn-outline-dark">
+            Перейти в каталог {{ brand.brand }}</a>
         </div>
       </div>
     </div>
