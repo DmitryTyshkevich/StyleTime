@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+  <div class="col-md-5 offset-md-3 my-5">
+    <div class="media-body">
+        <h2 class="account-heading">{{ user.username }}</h2>
+        <p class="text-secondary">{{ user.email }}</p>
+    </div>
+    <div class="media">
+      <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" style="width: 50%; height: auto;">
+      <form action="#" method="post">
+      {{ image_form|crispy}}
+      {% csrf_token %}
+      <p><input type="submit" value="Добавить" class="btn btn-outline-dark"></p>
+    </form>
+
+    </div>
+    <!-- Здесь будет форма -->
+  </div>
+  <h3 align="center" style="color:#3cb371">История заказов:</h3>
+  <div class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>№ заказа</th>
+      <th>Товар</th>
+      <th>Количество</th>
+      <th>Цена</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for number, order in all_order_data.items %}
+    <tr>
+      <td rowspan="{{ order|length}}">
+        <span> #{{ number|cut:"Заказ " }}</span>
+      </td>
+      {% for data in order %}
+      {% for product, value in data.items %}
+          <td>{{ product }}</td>
+          <td>{{ value.quantity }}</td>
+          <td class="num">{{ value.price }} руб.</td>
+    </tr>
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+
+    </tbody>
+
+  </table>
+
+
+
+
+
+
+  </div>
+
+{% endblock content %}

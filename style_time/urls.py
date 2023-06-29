@@ -19,10 +19,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 from style_time import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('users/', include('users.urls')),
     path('cart/', include('cart.urls')),
     path('shop/', include('shop.urls')),
     path('orders/', include('orders.urls')),
