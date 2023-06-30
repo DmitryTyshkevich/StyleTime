@@ -1,60 +1,52 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<br>
-  <div class="col-md-5 offset-md-3 my-5">
-    <div class="media-body">
-        <h2 class="account-heading">{{ user.username }}</h2>
-        <p class="text-secondary">{{ user.email }}</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card border-0 my-2">
+        <img class="card rounded-circle account-img" src="{{ user.profile.image.url }}" alt="Avatar">
+        <div class="card-body">
+          <form action="{% url 'users:profile' user.username %}" method="post" enctype="multipart/form-data">
+            {{ form|crispy}}
+            {% csrf_token %}
+            <input type="submit" value="Применить" class="btn btn-link" style="color:#3c3c3c">
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="media">
-      <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" style="width: 50%; height: auto;">
-      <form action="#" method="post">
-      {{ image_form|crispy}}
-      {% csrf_token %}
-      <p><input type="submit" value="Добавить" class="btn btn-outline-dark"></p>
-    </form>
-
-    </div>
-    <!-- Здесь будет форма -->
-  </div>
-  <h3 align="center" style="color:#3cb371">История заказов:</h3>
-  <div class="container">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>№ заказа</th>
-      <th>Товар</th>
-      <th>Количество</th>
-      <th>Цена</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    {% for number, order in all_order_data.items %}
-    <tr>
-      <td rowspan="{{ order|length}}">
-        <span> #{{ number|cut:"Заказ " }}</span>
-      </td>
-      {% for data in order %}
-      {% for product, value in data.items %}
+    <div class="col-md-9">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+      <p class="text-secondary">{{ user.first_name }} {{ user.last_name }}</p>
+      <h3 class="mt-4">История заказов:</h3>
+      <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+          <th>№ заказа</th>
+          <th>Товар</th>
+          <th>Количество</th>
+          <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for number, order in all_order_data.items %}
+        <tr>
+          <td rowspan="{{ order|length}}">
+            <span>#{{ number|cut:"Заказ " }}</span>
+          </td>
+          {% for data in order %}
+          {% for product, value in data.items %}
           <td>{{ product }}</td>
           <td>{{ value.quantity }}</td>
           <td class="num">{{ value.price }} руб.</td>
-    </tr>
+        </tr>
         {% endfor %}
-      {% endfor %}
-    {% endfor %}
-
-    </tbody>
-
-  </table>
-
-
-
-
-
-
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
-
+</div>
 {% endblock content %}

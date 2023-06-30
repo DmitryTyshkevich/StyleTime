@@ -8,11 +8,12 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+        labels = {
+            'image': 'Чтобы изменить фото',
+        }
 
 
 class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField()
-
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
