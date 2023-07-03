@@ -6,9 +6,10 @@
     <div class="col-md-3">
       <div class="card border-0 my-2">
         <img class="card rounded-circle account-img" src="{{ user.profile.image.url }}" alt="Avatar">
+        <h4 class="text-secondary">{{ user.first_name }} {{ user.last_name }}</h4>
         <div class="card-body">
           <form action="{% url 'users:profile' user.username %}" method="post" enctype="multipart/form-data">
-            {{ form|crispy}}
+            {{ form }}
             {% csrf_token %}
             <input type="submit" value="Применить" class="btn btn-link" style="color:#3c3c3c">
           </form>
@@ -18,7 +19,6 @@
     <div class="col-md-9">
       <h2 class="account-heading">{{ user.username }}</h2>
       <p class="text-secondary">{{ user.email }}</p>
-      <p class="text-secondary">{{ user.first_name }} {{ user.last_name }}</p>
       <h3 class="mt-4">История заказов:</h3>
       <table class="table table-striped mt-3">
         <thead>

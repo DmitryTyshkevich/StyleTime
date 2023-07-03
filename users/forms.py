@@ -9,7 +9,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['image']
         labels = {
-            'image': 'Чтобы изменить фото',
+            'image': '',
         }
 
 

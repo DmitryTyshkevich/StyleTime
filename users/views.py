@@ -24,7 +24,8 @@ def register(request):
 
 
 @login_required
-# для обеспечения ограничение доступа к профилям для незарегистрированных пользователей
+# для обеспечения ограничение доступа к профилям для
+# незарегистрированных пользователей
 def profile(request, username):
     user = User.objects.get(username=username)
     orders = Order.objects.filter(email=user.email)
@@ -36,7 +37,8 @@ def profile(request, username):
     for item in order_items:
         all_order_data[str(item)] = all_order_data.get(str(item), [])
         all_order_data[str(item)].append({product.get(
-            id=item.product_id).model: {'price': str(item.price), 'quantity': item.quantity}})
+            id=item.product_id).model: {'price': str(item.price),
+                                        'quantity': item.quantity}})
 
     all_order_data = dict(reversed(all_order_data.items()))
 
@@ -47,4 +49,5 @@ def profile(request, username):
             return redirect('users:profile', username=user.username)
     else:
         form = ProfileForm()
-        return render(request, 'users/profile.html', {'all_order_data': all_order_data, 'form': form})
+        return render(request, 'users/profile.html',
+                      {'all_order_data': all_order_data, 'form': form})
