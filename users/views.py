@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
 from shop.models import Product
 from .forms import UserRegisterForm, ProfileForm
 from django.contrib.auth.decorators import login_required
@@ -16,7 +15,8 @@ def register(request):
             user = form.save()
             Profile.objects.create(user=user)
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Создан аккаунт {username}!')
+            messages.success(
+                request, f'Создан аккаунт {username}!')
             return redirect('users:login')
     else:
         form = UserRegisterForm()

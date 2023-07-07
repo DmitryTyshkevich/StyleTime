@@ -12,8 +12,8 @@
   <p>
   <h6 style="text-indent: 2em; color:#696969">
     <em>Мужчины любят все вокруг контролировать. Контроль над чувствами, контроль над окружающими,
-    контроль над временем - это основные правила выживания в современном мире. Надежные наручные часы помогут любому
-    представителю сильного пола подчинить себе каждую секунду своей жизни</em>
+      контроль над временем - это основные правила выживания в современном мире. Надежные наручные часы помогут любому
+      представителю сильного пола подчинить себе каждую секунду своей жизни</em>
   </h6>
   <p>
 </div>
@@ -24,11 +24,10 @@
     <div class="col" align="center">
       <div class="card border-0" style="width: 70%; height: auto;">
         <a class="image-button" href="{% url 'shop:catalogue' brand.brand %}">
-          <img src="{{ brand.image.url }}" class="card-img-top" alt="..."/>
+          <img src="{{ brand.image.url }}" class="card-img-top" alt="..." />
         </a>
         <div class="card-body">
-          <a href="{% url 'shop:catalogue' brand.brand %}"
-             class="btn btn-outline-dark">
+          <a href="{% url 'shop:catalogue' brand.brand %}" class="btn btn-outline-dark">
             Перейти в каталог {{ brand.brand }}</a>
         </div>
       </div>
@@ -38,5 +37,3 @@
 </div>
 
 {% endblock content%}
-
-

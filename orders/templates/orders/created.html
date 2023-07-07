@@ -4,21 +4,21 @@
 
 {% block content %}
 <div class="container my-5">
-
-<!--    <p align="center">-->
-<!--      <a href="{% url 'index' %}" class="btn btn-primary">Продолжить покупки</a>-->
-<!--    </p>-->
-    <p class="text-right" align="center">
-      <img src="{% static 'images/order_ok.png' %}" alt="Image" style="width: 42%; height: auto;">
+  <!--    <p align="center">-->
+  <!--      <a href="{% url 'index' %}" class="btn btn-primary">Продолжить покупки</a>-->
+  <!--    </p>-->
+  <p class="text-right" align="center">
+    <img src="{% static 'images/order_ok.png' %}" alt="Image" style="width: 42%; height: auto;">
   </p>
   <h2 align="center" style="color:#3cb371">Спасибо!</h2>
   <p align="center">Ваш заказ успешно оформлен. Мы свяжемся с вами в ближайшее время.</p>
   <p align="center">Номер вашего заказа
-        <strong>#{{ id }}</strong>.</p>
+    <strong>#{{ id }}</strong>.
+  </p>
   <p class="text-right" align="center">
     <a href="{% url 'index' %}" class="btn btn-primary">Продолжить покупки</a>
   </p>
-  </div>
+</div>
 
 
 {% endblock %}

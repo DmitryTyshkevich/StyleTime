@@ -5,39 +5,41 @@
 <div class="container my-5">
   <table class="table">
     <thead>
-    <tr>
-      <th>Фото</th>
-      <th>Товар</th>
-      <th>Количество</th>
-      <th>Цена за единицу</th>
-      <th>Цена</th>
-    </tr>
+      <tr>
+        <th>Фото</th>
+        <th>Товар</th>
+        <th>Количество</th>
+        <th>Цена за единицу</th>
+        <th>Цена</th>
+      </tr>
     </thead>
     <tbody>
-    {% for item in cart %}
-    {% with product=item.product %}
-    <tr>
-      <td>
-        <a href="{{ product.image.url }}">
-          <img src="{{ product.image.url }}" style="width: 35%; height: auto;">
+      {% for item in cart %}
+      {% with product=item.product %}
+      <tr>
+        <td>
+          <a href="{{ product.image.url }}">
+            <img src="{{ product.image.url }}" style="width: 35%; height: auto;">
 
-        </a><br>
-        <a href="{% url 'cart:cart_remove' product.pk %}" style="color:#3c3c3c">Удалить</a>
-      </td>
-      <td>{{ product.model }}</td>
-      <td>{{ item.quantity }}</td>
-      <td class="num">{{ item.price }} руб.</td>
-      <td class="num">{{ item.total_price }} руб.</td>
-    </tr>
-    {% endwith %}
-    {% endfor %}
-    <tr class="total">
-      <td>
-        <h4 style="color:#ff4947">Итого:</h4>
-      </td>
-      <td colspan="3"></td>
-      <td class="num" style="color:#ff4947"> <h4>{{ cart.get_total_price }} руб.</h4></td>
-    </tr>
+          </a><br>
+          <a href="{% url 'cart:cart_remove' product.pk %}" style="color:#3c3c3c">Удалить</a>
+        </td>
+        <td>{{ product.model }}</td>
+        <td>{{ item.quantity }}</td>
+        <td class="num">{{ item.price }} руб.</td>
+        <td class="num">{{ item.total_price }} руб.</td>
+      </tr>
+      {% endwith %}
+      {% endfor %}
+      <tr class="total">
+        <td>
+          <h4 style="color:#ff4947">Итого:</h4>
+        </td>
+        <td colspan="3"></td>
+        <td class="num" style="color:#ff4947">
+          <h4>{{ cart.get_total_price }} руб.</h4>
+        </td>
+      </tr>
     </tbody>
   </table>
   <p class="text-right" align="center">
