@@ -52,13 +52,13 @@
         <button class="btn btn-sm btn-light me-4" type="submit">Поиск</button>
       </form>
       <!--          <button type="button" class="btn btn-outline-primary btn-sm me-4">Вход</button>-->
-     {% if user.is_authenticated %}
-            	<a class="nav-item nav-link me-4" href="{% url 'users:profile' user.username %}">Профиль</a>
-            	<a class="nav-item nav-link me-4" href="{% url 'users:logout' %}">Выход</a>
-          	{% else %}
-            	<a class="nav-item nav-link me-4" href="{% url 'users:login' %}">Вход</a>
-            	<a class="nav-item nav-link me-4" href="{% url 'users:register' %}">Регистрация</a>
-          	{% endif %}
+      {% if user.is_authenticated %}
+      <a class="nav-item nav-link me-4" href="{% url 'users:profile' user.username %}">Профиль</a>
+      <a class="nav-item nav-link me-4" href="{% url 'users:logout' %}">Выход</a>
+      {% else %}
+      <a class="nav-item nav-link me-4" href="{% url 'users:login' %}">Вход</a>
+      <a class="nav-item nav-link me-4" href="{% url 'users:register' %}">Регистрация</a>
+      {% endif %}
       <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'images/basket_shop.png' %}"
                                                   class="btn btn-outline-light me-4 nav-link active"
                                                   aria-current="page">
@@ -71,8 +71,39 @@
 
 {% block content %}{% endblock %}
 
-<footer class="bg-light text-center py-3 footer">
-  &copy; 2023 Style Time
+<footer class="bg-light py-3 footer">
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+
+    <li class="nav-item"><a href="{% url 'delivery_payment:delivery_payment' %}"
+                            class="nav-link px-2 text-body-secondary">Доставка и
+      оплата</a></li>
+    <li class="nav-item"><a href="{% url 'guarantee_returns:guarantee_returns' %}"
+                            class="nav-link px-2 text-body-secondary">Гарантия и возврат</a></li>
+    <li class="ms-3"><img src="{% static 'banks_image/belcard.png' %}" alt="belcard"></li>
+    <li class="ms-3"><img src="{% static 'banks_image/mir.svg' %}" alt="mir"></li>
+    <li class="ms-3"><img src="{% static 'banks_image/visa.svg' %}" alt="visa"></li>
+    <li class="ms-3"><img src="{% static 'banks_image/maestro.png' %}" alt="maestro"></li>
+    <li class="ms-3"><img src="{% static 'banks_image/mastercard.png' %}" alt="mastercard"></li>
+
+  </ul>
+  <div style="color:#A9A9A9">
+    <p>
+      Контакты: MTC: +375 33-XXX-XX-XX; A1: +375 44-XXX-XX-XX; Life: +375 25-XXX-XX-XX; г. Минск, ул. Xхххх, дом: х,
+      пом:
+      х.
+    </p>
+    <p align="left">
+      Владелец Торговое Унитарное предприятие «Style Time». Свидетельство о регистрации № XXXXXXXXX УНП XXXXXXXXX выдано
+      XX.XX.XXXX г. Минским городским исполнительным комитетом. Регистрационный номер интернет-магазина в Торговом
+      реестре
+      XXXXXX. Дата включения сведений в Торговый реестр XX.XX.XXXXг. Юридический адрес: г. Минск, ул. Xхххх, дом: х,
+      пом:
+      х.
+    </p>
+    <span>&copy; 2023  Интернет-магазин Style Time </span>
+    <br>Все права защищены.
+  </div>
+
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"

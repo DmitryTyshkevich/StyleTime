@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'guarantee_returns.apps.GuaranteeReturnsConfig',
+    'delivery_payment.apps.DeliveryPaymentConfig',
     'users.apps.UsersConfig',
     'bootstrap4',
     'crispy_forms',

@@ -69,8 +69,8 @@ table {
 
 .footer {
     background-color: #f8f8f8;
-    padding: 20px;
-    position: fixed;
+    padding: 10px;
+    /*position: fixed;*/
     left: 0;
     bottom: 0;
     width: 100%;
