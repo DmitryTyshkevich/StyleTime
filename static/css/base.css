@@ -4,6 +4,7 @@ nav {
     left: 0 !important;
     width: 100% !important;
     z-index: 9999 !important;
+    background-color: #f8f8f8;
 }
 .card-img-top {
   position: relative;
@@ -68,7 +69,6 @@ table {
 }
 
 .footer {
-    background-color: #f8f8f8;
     padding: 10px;
     /*position: fixed;*/
     left: 0;

@@ -16,7 +16,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg">
 
   <div class="container-fluid">
     <a class="navbar-brand p-0" href="{% url 'index' %}">
@@ -71,7 +71,8 @@
 
 {% block content %}{% endblock %}
 
-<footer class="bg-light py-3 footer">
+<footer class="bg-light py-3 footer bg-white">
+  <hr>
   <ul class="nav justify-content-center border-bottom pb-3 mb-3">
 
     <li class="nav-item"><a href="{% url 'delivery_payment:delivery_payment' %}"

@@ -21,21 +21,55 @@
 </div>
 
 <div class="container my-5">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-    {% for brand in manufacture %}
-    <div class="col" align="center">
-      <div class="card border-0" style="width: 70%; height: auto;">
-        <a class="image-button" href="{% url 'shop:catalogue' brand.brand %}">
-          <img src="{{ brand.image.url }}" class="card-img-top" alt="..."/>
-        </a>
-        <div class="card-body">
-          <a href="{% url 'shop:catalogue' brand.brand %}" class="btn btn-dark">
-            Каталог {{ brand.brand }}</a>
-        </div>
-      </div>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+      {% for brand in manufacture|slice:"1:" %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter }}"
+              aria-label="Slide {{ forloop.counter|add:1 }}"></button>
+      {% endfor %}
     </div>
-    {% endfor %}
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="{% url 'shop:catalogue' manufacture.0.brand %}"><img src="{{ manufacture.0.image.url }}"
+                                                                      class="d-block w-100" alt="..."></a>
+      </div>
+      {% for brand in manufacture|slice:"1:" %}
+      <div class="carousel-item">
+        <a href="{% url 'shop:catalogue' brand.brand %}"><img src="{{ brand.image.url }}" class="d-block w-100"
+                                                              alt="..."></a>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Предыдущий</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Следующий</span>
+    </button>
   </div>
+
+  <!--  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">-->
+  <!--    {% for brand in manufacture %}-->
+  <!--    <div class="col" align="center">-->
+  <!--      <div class="card border-0" style="width: 70%; height: auto;">-->
+  <!--        <a class="image-button" href="{% url 'shop:catalogue' brand.brand %}">-->
+  <!--          <img src="{{ brand.image.url }}" class="card-img-top" alt="..."/>-->
+  <!--        </a>-->
+  <!--        <div class="card-body">-->
+  <!--          <a href="{% url 'shop:catalogue' brand.brand %}" class="btn btn-dark">-->
+  <!--            Каталог {{ brand.brand }}</a>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    {% endfor %}-->
+  <!--  </div>-->
 </div>
 
 {% endblock content%}
