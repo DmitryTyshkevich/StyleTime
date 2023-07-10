@@ -5,28 +5,153 @@
 {% block content %}
 <div class="container my-5"><br>
   <div class="row">
-    {% for model in products %}
-    {% with brand=model|slice:":0"|safe %}
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-      <div class="col" align="center">
-        <a class="image-button" href="{% url 'shop:watch' brand  model.pk %}">
-          <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">
-        </a><br>
-        <div class="card border-0">
-          <h6 class="card-title"><em>{{ model.model }}</em></h6>
-          <span style="color:#787878">
-            <em>{{ model.collection }}</em>
-          </span>
-          <!--              <p class="card-text">{{ model.description }}</p>-->
-          <h5 class="card-title">{{ model.price }} руб. </h5>
-          <!--              <a href="#" class="btn btn-primary mb-2">Купить за {{ model.price }} руб.</a>-->
-          <!--              <a href="#" class="btn btn-light ">В корзину</a>-->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+
+          <form method="GET" action="#">
+            <div class="form-group">
+              <label class="card-title" for="sort_price">Цена</label>
+              <select class="form-control" id="sort_price" name="sort_price">
+                <option value="asc">по возрастанию</option>
+                <option value="desc">по убыванию</option>
+              </select>
+            </div>
+             <hr>
+            <h5 class="card-title">Тип механизма</h5>
+            <div class="form-check">
+              <div class="container" align="left">
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="Механические с автоподзаводом" name="type">
+                  механические с автоподзаводом
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="Механические с ручным заводом" name="type">
+                  механические с ручным заводом
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="Кварцевые" name="type">
+                  кварцевые
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="Кварцевый с солнечной подзарядкой" name="type">
+                  кварцевый с солнечной подзарядкой
+                </label>
+              </div>
+            </div>
+            <hr>
+
+
+            <h5 class="card-title">Материал браслета</h5>
+            <div class="form-check">
+              <div class="container" align="left">
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="нержавеющая сталь" name="bracelet_material">
+                  нержавеющая сталь
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="кожаный ремешок" name="bracelet_material">
+                  кожаный ремешок
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="каучук" name="bracelet_material">
+                  каучук
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="пластик" name="bracelet_material">
+                  пластик
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="титан" name="bracelet_material">
+                  титан
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="текстиль" name="bracelet_material">
+                  текстиль
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="керамика" name="bracelet_material">
+                  керамика
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="розовое золото" name="bracelet_material">
+                  розовое золото
+                </label></div>
+            </div>
+            <hr>
+
+
+            <h5 class="card-title">Тип стекла</h5>
+            <div class="form-check">
+              <div class="container" align="left">
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="сапфировое" name="glass">
+                  сапфировое
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="минеральное" name="glass">
+                  минеральное
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Применить</button>
+          </form>
+
         </div>
       </div>
-
     </div>
-    {% endwith %}
-    {% endfor %}
+    <div class="col-md-9">
+      <div class="row">
+        {% for model in products %}
+        {% with brand=model|slice:":0"|safe %}
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="col" align="center">
+            <a class="image-button" href="{% url 'shop:watch' brand  model.pk %}">
+              <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">
+            </a><br>
+            <div class="card border-0">
+              <h6 class="card-title"><em>{{ model.model }}</em></h6>
+              <span style="color:#787878">
+            <em>{{ model.collection }}</em>
+          </span>
+              <!--              <p class="card-text">{{ model.description }}</p>-->
+              <h5 class="card-title">{{ model.price }} руб. </h5>
+              <!--              <a href="#" class="btn btn-primary mb-2">Купить за {{ model.price }} руб.</a>-->
+              <!--              <a href="#" class="btn btn-light ">В корзину</a>-->
+            </div>
+          </div>
+        </div>
+        {% endwith %}
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
+
+<!--<div class="container my-5"><br>-->
+<!--  <div class="row">-->
+<!--    {% for model in products %}-->
+<!--    {% with brand=model|slice:":0"|safe %}-->
+<!--    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">-->
+<!--      <div class="col" align="center">-->
+<!--        <a class="image-button" href="{% url 'shop:watch' brand  model.pk %}">-->
+<!--          <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">-->
+<!--        </a><br>-->
+<!--        <div class="card border-0">-->
+<!--          <h6 class="card-title"><em>{{ model.model }}</em></h6>-->
+<!--          <span style="color:#787878">-->
+<!--            <em>{{ model.collection }}</em>-->
+<!--          </span>-->
+<!--          &lt;!&ndash;              <p class="card-text">{{ model.description }}</p>&ndash;&gt;-->
+<!--          <h5 class="card-title">{{ model.price }} руб. </h5>-->
+<!--          &lt;!&ndash;              <a href="#" class="btn btn-primary mb-2">Купить за {{ model.price }} руб.</a>&ndash;&gt;-->
+<!--          &lt;!&ndash;              <a href="#" class="btn btn-light ">В корзину</a>&ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--    {% endwith %}-->
+<!--    {% endfor %}-->
+<!--  </div>-->
+<!--</div>-->
 {% endblock %}

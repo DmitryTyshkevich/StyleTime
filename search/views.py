@@ -12,4 +12,7 @@ def search(request):
             return render(request, 'search/empty_result.html')
 
     else:
+        # для перенаправления пользователя на предыдущую страницу, которую он
+        # посещал. Если HTTP-заголовок запроса не существует, то пользователь
+        # будет перенаправлен на корневой URL-адрес.
         return redirect(request.META.get('HTTP_REFERER', '/'))
