@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'product_filter.apps.ProductFilterConfig',
     'guarantee_returns.apps.GuaranteeReturnsConfig',
     'delivery_payment.apps.DeliveryPaymentConfig',
     'users.apps.UsersConfig',

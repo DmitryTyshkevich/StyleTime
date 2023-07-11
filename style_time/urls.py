@@ -31,6 +31,7 @@ urlpatterns = [
     path('search/', include('search.urls')),
     path('delivery_payment/', include('delivery_payment.urls')),
     path('guarantee_returns/', include('guarantee_returns.urls')),
+    path('product_filter/', include('product_filter.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

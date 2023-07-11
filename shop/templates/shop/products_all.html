@@ -9,15 +9,16 @@
       <div class="card">
         <div class="card-body">
 
-          <form method="GET" action="#">
+          <form method="GET" action="{% url 'product_filter:product_filter' %}">
             <div class="form-group">
               <label class="card-title" for="sort_price">Цена</label>
               <select class="form-control" id="sort_price" name="sort_price">
-                <option value="asc">по возрастанию</option>
-                <option value="desc">по убыванию</option>
+                <option value="price">по возрастанию</option>
+                <option value="-price">по убыванию</option>
               </select>
             </div>
-             <hr>
+            <hr>
+
             <h5 class="card-title">Тип механизма</h5>
             <div class="form-check">
               <div class="container" align="left">
@@ -41,6 +42,59 @@
             </div>
             <hr>
 
+            <h5 class="card-title">Материал корпуса</h5>
+            <div class="form-check">
+              <div class="container" align="left">
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="нержавеющая сталь" name="case_material">
+                  нержавеющая сталь
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="нержавеющая сталь + IP покрытие"
+                         name="case_material">
+                  нержавеющая сталь + IP покрытие
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="нержавеющая сталь + PVD покрытие"
+                         name="case_material">
+                  нержавеющая сталь + PVD покрытие
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="нержавеющая сталь + керамика"
+                         name="case_material">
+                  нержавеющая сталь + керамика
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="титан" name="case_material">
+                  титан
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="титан + PVD-покрытие" name="case_material">
+                  титан + PVD-покрытие
+                </label>
+                 <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="титан + золото" name="case_material">
+                  титан + золото
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="розовое золото" name="case_material">
+                  розовое золото
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="карбон" name="case_material">
+                  карбон
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="керамика" name="case_material">
+                  керамика
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="полимерный пластик" name="case_material">
+                  полимерный пластик
+                </label>
+              </div>
+            </div>
+            <hr>
 
             <h5 class="card-title">Материал браслета</h5>
             <div class="form-check">
@@ -48,6 +102,11 @@
                 <label class="form-check-label" style="width: 100%;">
                   <input class="form-check-input" type="checkbox" value="нержавеющая сталь" name="bracelet_material">
                   нержавеющая сталь
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="нержавеющая сталь + IP покрытие"
+                         name="bracelet_material">
+                  нержавеющая сталь + IP покрытие
                 </label>
                 <label class="form-check-label" style="width: 100%;">
                   <input class="form-check-input" type="checkbox" value="кожаный ремешок" name="bracelet_material">
@@ -58,12 +117,20 @@
                   каучук
                 </label>
                 <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="каучук + джинса" name="bracelet_material">
+                  каучук + джинса
+                </label>
+                <label class="form-check-label" style="width: 100%;">
                   <input class="form-check-input" type="checkbox" value="пластик" name="bracelet_material">
                   пластик
                 </label>
                 <label class="form-check-label" style="width: 100%;">
                   <input class="form-check-input" type="checkbox" value="титан" name="bracelet_material">
                   титан
+                </label>
+                <label class="form-check-label" style="width: 100%;">
+                  <input class="form-check-input" type="checkbox" value="титан + IP покрытие" name="bracelet_material">
+                  титан + IP покрытие
                 </label>
                 <label class="form-check-label" style="width: 100%;">
                   <input class="form-check-input" type="checkbox" value="текстиль" name="bracelet_material">
@@ -79,7 +146,6 @@
                 </label></div>
             </div>
             <hr>
-
 
             <h5 class="card-title">Тип стекла</h5>
             <div class="form-check">
@@ -127,31 +193,4 @@
     </div>
   </div>
 </div>
-
-<!--<div class="container my-5"><br>-->
-<!--  <div class="row">-->
-<!--    {% for model in products %}-->
-<!--    {% with brand=model|slice:":0"|safe %}-->
-<!--    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">-->
-<!--      <div class="col" align="center">-->
-<!--        <a class="image-button" href="{% url 'shop:watch' brand  model.pk %}">-->
-<!--          <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">-->
-<!--        </a><br>-->
-<!--        <div class="card border-0">-->
-<!--          <h6 class="card-title"><em>{{ model.model }}</em></h6>-->
-<!--          <span style="color:#787878">-->
-<!--            <em>{{ model.collection }}</em>-->
-<!--          </span>-->
-<!--          &lt;!&ndash;              <p class="card-text">{{ model.description }}</p>&ndash;&gt;-->
-<!--          <h5 class="card-title">{{ model.price }} руб. </h5>-->
-<!--          &lt;!&ndash;              <a href="#" class="btn btn-primary mb-2">Купить за {{ model.price }} руб.</a>&ndash;&gt;-->
-<!--          &lt;!&ndash;              <a href="#" class="btn btn-light ">В корзину</a>&ndash;&gt;-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-<!--    {% endwith %}-->
-<!--    {% endfor %}-->
-<!--  </div>-->
-<!--</div>-->
 {% endblock %}
