@@ -85,7 +85,7 @@
                   <input class="form-check-input" type="checkbox" value="титан + PVD-покрытие" name="case_material">
                   титан + PVD-покрытие
                 </label>
-                 <label class="form-check-label" style="width: 100%;">
+                <label class="form-check-label" style="width: 100%;">
                   <input class="form-check-input" type="checkbox" value="титан + золото" name="case_material">
                   титан + золото
                 </label>
@@ -173,37 +173,45 @@
                 </label>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Применить</button>
+            <button type="submit" class="btn btn-outline-dark">Применить</button>
           </form>
 
         </div>
       </div>
     </div>
-<div class="col-md-9">
-  <div class="row">
-    {% if products %}
-    {% for model in products %}
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-      <div class="col" align="center">
-        <a class="image-button" href="{% url 'shop:watch' brand.brand  model.pk %}">
-          <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">
-        </a><br>
-        <div class="card border-0">
-          <h6 class="card-title"><em>{{ model.model }}</em></h6>
-          <span style="color:#787878">
+    <div class="col-md-9">
+      <div class="row">
+        {% if products %}
+        {% for model in products %}
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="col" align="center">
+            <a class="image-button" href="{% url 'shop:watch' brand.brand  model.pk %}">
+              <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">
+            </a><br>
+            <div class="card border-0">
+              <h6 class="card-title"><em>{{ model.model }}</em></h6>
+              <span style="color:#787878">
             <em>{{ model.collection }}</em>
           </span>
-          <!--              <p class="card-text">{{ model.description }}</p>-->
-          <h5 class="card-title">{{ model.price }} руб. </h5>
-          <!--              <a href="#" class="btn btn-primary mb-2">Купить за {{ model.price }} руб.</a>-->
-          <!--              <a href="#" class="btn btn-light ">В корзину</a>-->
+              <h5 class="card-title">{{ model.price }} руб. </h5>
+              <form action="{% url 'cart:cart_add' model.pk %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input type="submit" value="В корзину" class="btn btn-outline-dark btn-sm">
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    <h5 align="center">Совпадений не найдено ;(</h5>
-    {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="container my-5">
+          <h4 align="center">Совпадений не найдено!</h4>
+          <p class="text-right" align="center">
+            <img src="{% static 'images/glass.jpg' %}" alt="Image" style="width: 32%; height: auto;">
+
+          </p>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>

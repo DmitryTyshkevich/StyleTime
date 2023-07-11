@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .models import *
-from cart.forms import CartAddProductForm
+from cart.forms import CartAddProductFormV1, CartAddProductFormV2
 
 
 def products_all(request):
     products = Product.objects.all()
+    cart_product_form = CartAddProductFormV2()
 
     price = request.GET.get('sort_price')
     type_mechanism = request.GET.getlist('type')
@@ -13,10 +14,12 @@ def products_all(request):
     glass = request.GET.getlist('glass')
 
     if not type_mechanism and not bracelet and not glass and not case_material and not price:
-        return render(request, 'shop/products_all.html', {'products': products})
+        return render(request, 'shop/products_all.html',
+                      {'products': products, 'cart_product_form': cart_product_form})
     elif not type_mechanism and not bracelet and not glass and not case_material:
         products = products.order_by(price)
-        return render(request, 'shop/products_all.html', {'products': products})
+        return render(request, 'shop/products_all.html',
+                      {'products': products, 'cart_product_form': cart_product_form})
     else:
         products = Features.objects.filter(type__in=type_mechanism) | Features.objects.filter(
             case_material__in=case_material) | Features.objects.filter(
@@ -26,12 +29,14 @@ def products_all(request):
         all_products = Product.objects.filter(id__in=product_ids).order_by(
             price)  # Получить все объекты Product по идентификаторам
 
-        return render(request, 'shop/products_all.html', {'products': all_products})
+        return render(request, 'shop/products_all.html',
+                      {'products': all_products, 'cart_product_form': cart_product_form})
 
 
 def catalogue(request, producer):
     products = Product.objects.filter(model__startswith=producer)
     brand = Manufacture.objects.get(brand=producer)
+    cart_product_form = CartAddProductFormV2()
 
     price = request.GET.get('sort_price')
     type_mechanism = request.GET.getlist('type')
@@ -40,10 +45,12 @@ def catalogue(request, producer):
     glass = request.GET.getlist('glass')
 
     if not type_mechanism and not bracelet and not glass and not case_material and not price:
-        return render(request, 'shop/catalogue.html', {'products': products, 'brand': brand})
+        return render(request, 'shop/catalogue.html',
+                      {'products': products, 'brand': brand, 'cart_product_form': cart_product_form})
     elif not type_mechanism and not bracelet and not glass and not case_material:
         products = products.order_by(price)
-        return render(request, 'shop/catalogue.html', {'products': products, 'brand': brand})
+        return render(request, 'shop/catalogue.html',
+                      {'products': products, 'brand': brand, 'cart_product_form': cart_product_form})
     else:
         products = (Features.objects.filter(type__in=type_mechanism) | Features.objects.filter(
             case_material__in=case_material) | Features.objects.filter(
@@ -52,11 +59,12 @@ def catalogue(request, producer):
         product_ids = products.values_list('product', flat=True)
         all_products = Product.objects.filter(id__in=product_ids).order_by(price)
 
-        return render(request, 'shop/catalogue.html', {'products': all_products, 'brand': brand})
+        return render(request, 'shop/catalogue.html',
+                      {'products': all_products, 'brand': brand, 'cart_product_form': cart_product_form})
 
 
 def watch(request, producer, pk):
-    cart_product_form = CartAddProductForm()
+    cart_product_form = CartAddProductFormV1()
     product = Product.objects.get(pk=pk)
     features = Features.objects.get(product=pk)
     return render(request, 'shop/watch.html', {'product': product, 'features': features,

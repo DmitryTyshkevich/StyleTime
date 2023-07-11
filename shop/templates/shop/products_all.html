@@ -72,7 +72,7 @@
                   <input class="form-check-input" type="checkbox" value="титан + PVD-покрытие" name="case_material">
                   титан + PVD-покрытие
                 </label>
-                 <label class="form-check-label" style="width: 100%;">
+                <label class="form-check-label" style="width: 100%;">
                   <input class="form-check-input" type="checkbox" value="титан + золото" name="case_material">
                   титан + золото
                 </label>
@@ -160,7 +160,7 @@
                 </label>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Применить</button>
+            <button type="submit" class="btn btn-outline-dark">Применить</button>
           </form>
 
         </div>
@@ -180,10 +180,12 @@
               <span style="color:#787878">
             <em>{{ model.collection }}</em>
           </span>
-              <!--              <p class="card-text">{{ model.description }}</p>-->
               <h5 class="card-title">{{ model.price }} руб. </h5>
-              <!--              <a href="#" class="btn btn-primary mb-2">Купить за {{ model.price }} руб.</a>-->
-              <!--              <a href="#" class="btn btn-light ">В корзину</a>-->
+              <form action="{% url 'cart:cart_add' model.pk %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input type="submit" value="В корзину" class="btn btn-outline-dark btn-sm">
+              </form>
             </div>
           </div>
         </div>

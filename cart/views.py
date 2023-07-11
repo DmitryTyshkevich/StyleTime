@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from shop.models import *
 from .cart import Cart
-from .forms import CartAddProductForm
+from .forms import CartAddProductFormV1, CartAddProductFormV2
 
 
 @require_POST
@@ -11,14 +11,16 @@ from .forms import CartAddProductForm
 def cart_add(request, pk):
     cart = Cart(request)
     product = get_object_or_404(Product, pk=pk)
-    producer = product.model.split()[0]
-    form = CartAddProductForm(request.POST)
+    # producer = product.model.split()[0]
+    form = CartAddProductFormV1(request.POST) or CartAddProductFormV2(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-    return redirect('shop:watch', producer=producer, pk=pk)
+
+    # return redirect('shop:watch', producer=producer, pk=pk)
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def cart_remove(request, pk):
