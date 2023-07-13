@@ -12,7 +12,8 @@ def cart_add(request, pk):
     cart = Cart(request)
     product = get_object_or_404(Product, pk=pk)
     # producer = product.model.split()[0]
-    form = CartAddProductFormV1(request.POST) or CartAddProductFormV2(request.POST)
+    form = CartAddProductFormV1(request.POST) \
+           or CartAddProductFormV2(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,

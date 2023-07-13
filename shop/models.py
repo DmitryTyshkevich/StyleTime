@@ -5,8 +5,12 @@ class Manufacture(models.Model):
     brand = models.CharField(max_length=50)
     country = models.CharField(max_length=20)
     description = models.TextField()
-    image = models.ImageField(upload_to='brand_image/', default='no_image.jpg')
-    image_brand = models.ImageField(upload_to='brand_image/', default='no_image.jpg')
+    image = models.ImageField(
+        upload_to='brand_image/', default='no_image.jpg'
+    )
+    image_brand = models.ImageField(
+        upload_to='brand_image/', default='no_image.jpg'
+    )
 
     def __str__(self):
         return self.brand
@@ -40,11 +44,3 @@ class Features(models.Model):
 
     def __str__(self):
         return self.type
-
-
-
-
-
-
-
-

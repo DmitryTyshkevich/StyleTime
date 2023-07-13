@@ -13,24 +13,44 @@ def products_all(request):
     bracelet = request.GET.getlist('bracelet_material')
     glass = request.GET.getlist('glass')
 
-    if not type_mechanism and not bracelet and not glass and not case_material and not price:
-        return render(request, 'shop/products_all.html',
-                      {'products': products, 'cart_product_form': cart_product_form})
-    elif not type_mechanism and not bracelet and not glass and not case_material:
+    if not type_mechanism and not bracelet and not glass \
+            and not case_material and not price:
+        return render(
+            request, 'shop/products_all.html',
+            {
+                'products': products,
+                'cart_product_form': cart_product_form
+            }
+        )
+    elif not type_mechanism and not bracelet and not glass \
+            and not case_material:
         products = products.order_by(price)
-        return render(request, 'shop/products_all.html',
-                      {'products': products, 'cart_product_form': cart_product_form})
+        return render(
+            request, 'shop/products_all.html',
+            {
+                'products': products,
+                'cart_product_form': cart_product_form
+            }
+        )
     else:
-        products = Features.objects.filter(type__in=type_mechanism) | Features.objects.filter(
-            case_material__in=case_material) | Features.objects.filter(
-            bracelet_material__in=bracelet) | Features.objects.filter(glass__in=glass)
-        product_ids = products.values_list('product',
-                                           flat=True)  # Получить список идентификаторов связанных объектов Product
-        all_products = Product.objects.filter(id__in=product_ids).order_by(
-            price)  # Получить все объекты Product по идентификаторам
+        features = Features.objects.filter(type__in=type_mechanism) \
+                   | Features.objects.filter(case_material__in=case_material) \
+                   | Features.objects.filter(bracelet_material__in=bracelet) \
+                   | Features.objects.filter(glass__in=glass)
+        product_ids = features.values_list(
+            'product',
+            flat=True
+        )  # Получить список идентификаторов связанных объектов Product
+        all_products = products.filter(
+            id__in=product_ids
+        ).order_by(price)  # Получить все объекты Product по идентификаторам
 
-        return render(request, 'shop/products_all.html',
-                      {'products': all_products, 'cart_product_form': cart_product_form})
+        return render(
+            request, 'shop/products_all.html',
+            {
+                'products': all_products, 'cart_product_form': cart_product_form
+            }
+        )
 
 
 def catalogue(request, producer):
@@ -44,28 +64,48 @@ def catalogue(request, producer):
     bracelet = request.GET.getlist('bracelet_material')
     glass = request.GET.getlist('glass')
 
-    if not type_mechanism and not bracelet and not glass and not case_material and not price:
-        return render(request, 'shop/catalogue.html',
-                      {'products': products, 'brand': brand, 'cart_product_form': cart_product_form})
-    elif not type_mechanism and not bracelet and not glass and not case_material:
+    if not type_mechanism and not bracelet and not glass \
+            and not case_material and not price:
+        return render(
+            request, 'shop/catalogue.html',
+            {
+                'products': products, 'brand': brand,
+                'cart_product_form': cart_product_form
+            }
+        )
+    elif not type_mechanism and not bracelet and not glass \
+            and not case_material:
         products = products.order_by(price)
         return render(request, 'shop/catalogue.html',
-                      {'products': products, 'brand': brand, 'cart_product_form': cart_product_form})
+                      {'products': products, 'brand': brand,
+                       'cart_product_form': cart_product_form})
     else:
-        products = (Features.objects.filter(type__in=type_mechanism) | Features.objects.filter(
-            case_material__in=case_material) | Features.objects.filter(
-            bracelet_material__in=bracelet) | Features.objects.filter(glass__in=glass)) & Features.objects.filter(
-            product__in=products)
-        product_ids = products.values_list('product', flat=True)
-        all_products = Product.objects.filter(id__in=product_ids).order_by(price)
+        features = (Features.objects.filter(type__in=type_mechanism)
+                    | Features.objects.filter(case_material__in=case_material)
+                    | Features.objects.filter(bracelet_material__in=bracelet)
+                    | Features.objects.filter(glass__in=glass)) \
+                   & Features.objects.filter(product__in=products)
+        product_ids = features.values_list('product', flat=True)
+        all_products = products.filter(id__in=product_ids).order_by(price)
 
-        return render(request, 'shop/catalogue.html',
-                      {'products': all_products, 'brand': brand, 'cart_product_form': cart_product_form})
+        return render(
+            request, 'shop/catalogue.html',
+            {
+                'products': all_products, 'brand': brand,
+                'cart_product_form': cart_product_form
+            }
+        )
 
 
 def watch(request, producer, pk):
     cart_product_form = CartAddProductFormV1()
     product = Product.objects.get(pk=pk)
     features = Features.objects.get(product=pk)
-    return render(request, 'shop/watch.html', {'product': product, 'features': features,
-                                               'cart_product_form': cart_product_form})
+    return render(
+        request, 'shop/watch.html',
+        {
+            'product': product,
+            'features': features,
+            'cart_product_form': cart_product_form
+        }
+    )
