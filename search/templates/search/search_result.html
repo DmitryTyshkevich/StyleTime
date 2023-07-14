@@ -168,6 +168,7 @@
     </div>
     <div class="col-md-9">
       <div class="row">
+        <p> Результат поиска "{{ search_text }}"</p>
         {% if products %}
         {% for model in products %}
         {% with brand=model|slice:":0"|safe %}

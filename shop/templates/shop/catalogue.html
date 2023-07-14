@@ -181,8 +181,8 @@
     </div>
     <div class="col-md-9">
       <div class="row">
-        {% if products %}
-        {% for model in products %}
+        {% if page_obj %}
+        {% for model in page_obj %}
         <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
           <div class="col" align="center">
             <a class="image-button" href="{% url 'shop:watch' brand.brand  model.pk %}">
