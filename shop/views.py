@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from .models import *
+from shop.models import Product, Features, Manufacture
 from cart.forms import CartAddProductFormV1, CartAddProductFormV2
 
 
@@ -46,11 +46,12 @@ def products_all(request):
                 'cart_product_form': cart_product_form
             }
         )
+
     else:
         features = Features.objects.filter(type__in=type_mechanism) \
-                   | Features.objects.filter(case_material__in=case_material) \
-                   | Features.objects.filter(bracelet_material__in=bracelet) \
-                   | Features.objects.filter(glass__in=glass)
+            | Features.objects.filter(case_material__in=case_material) \
+            | Features.objects.filter(bracelet_material__in=bracelet) \
+            | Features.objects.filter(glass__in=glass)
         product_ids = features.values_list(
             'product',
             flat=True
@@ -105,7 +106,7 @@ def catalogue(request, producer):
                     | Features.objects.filter(case_material__in=case_material)
                     | Features.objects.filter(bracelet_material__in=bracelet)
                     | Features.objects.filter(glass__in=glass)) \
-                   & Features.objects.filter(product__in=products)
+            & Features.objects.filter(product__in=products)
         product_ids = features.values_list('product', flat=True)
         all_products = products.filter(id__in=product_ids).order_by(price)
         page_obj = pagination(request, all_products)

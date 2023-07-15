@@ -29,6 +29,9 @@ class Product(models.Model):
     def __str__(self):
         return self.model
 
+    class Meta:
+        ordering = ['id']
+
 
 class Features(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

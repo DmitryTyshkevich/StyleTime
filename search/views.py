@@ -1,22 +1,21 @@
 from django.shortcuts import render, redirect
 from cart.forms import CartAddProductFormV2
-from shop.models import *
+from shop.models import Product, Features
 
 
 def search(request):
     cart_product_form = CartAddProductFormV2()
     search_text = request.GET['text']
     if search_text:
-        text = search_text
-        print(text)
-        products = Product.objects.filter(model__icontains=search_text)
+        products = Product.objects.filter(model__icontains=search_text) \
+                   | Product.objects.filter(collection__icontains=search_text)
         if products:
             return render(
                 request, 'search/search_result.html',
                 {
                     'products': products,
                     'cart_product_form': cart_product_form,
-                    'search_text': text
+                    'search_text': search_text
                 }
             )
         else:
