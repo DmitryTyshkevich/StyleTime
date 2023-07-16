@@ -30,7 +30,7 @@ def products_all(request):
         return render(
             request, 'shop/products_all.html',
             {
-                'page_obj': page_obj,
+                'products': page_obj,
                 'cart_product_form': cart_product_form
             }
         )
@@ -38,11 +38,11 @@ def products_all(request):
             and not case_material:
         products = products.order_by(price)
 
-        page_obj = pagination(request, products)
+        # page_obj = pagination(request, products)
         return render(
             request, 'shop/products_all.html',
             {
-                'page_obj': page_obj,
+                'products': products,
                 'cart_product_form': cart_product_form
             }
         )
@@ -59,11 +59,11 @@ def products_all(request):
         all_products = products.filter(
             id__in=product_ids
         ).order_by(price)  # Получить все объекты Product по идентификаторам
-        page_obj = pagination(request, all_products)
+        # page_obj = pagination(request, all_products)
         return render(
             request, 'shop/products_all.html',
             {
-                'page_obj': page_obj, 'cart_product_form': cart_product_form
+                'products': all_products, 'cart_product_form': cart_product_form
             }
         )
 
@@ -85,7 +85,7 @@ def catalogue(request, producer):
         return render(
             request, 'shop/catalogue.html',
             {
-                'page_obj': page_obj,
+                'products': page_obj,
                 'brand': brand,
                 'cart_product_form': cart_product_form
             }
@@ -93,10 +93,10 @@ def catalogue(request, producer):
     elif not type_mechanism and not bracelet and not glass \
             and not case_material:
         products = products.order_by(price)
-        page_obj = pagination(request, products)
+        # page_obj = pagination(request, products)
         return render(request, 'shop/catalogue.html',
                       {
-                          'page_obj': page_obj,
+                          'products': products,
                           'brand': brand,
                           'cart_product_form': cart_product_form
                       }
@@ -109,12 +109,12 @@ def catalogue(request, producer):
             & Features.objects.filter(product__in=products)
         product_ids = features.values_list('product', flat=True)
         all_products = products.filter(id__in=product_ids).order_by(price)
-        page_obj = pagination(request, all_products)
+        # page_obj = pagination(request, all_products)
 
         return render(
             request, 'shop/catalogue.html',
             {
-                'page_obj': page_obj,
+                'products': all_products,
                 'brand': brand,
                 'cart_product_form': cart_product_form
             }
