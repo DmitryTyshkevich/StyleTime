@@ -20,30 +20,30 @@
       <h2 class="account-heading">{{ user.username }}</h2>
       <p class="text-secondary">{{ user.email }}</p>
       <h3 class="mt-4">История заказов:</h3>
-      <table class="table table-striped mt-3">
+      <table class="table table-hover mt-3">
         <thead>
-          <tr>
-            <th>№ заказа</th>
-            <th>Товар</th>
-            <th>Количество</th>
-            <th>Цена</th>
-          </tr>
+        <tr>
+          <th>№ заказа</th>
+          <th>Товар</th>
+          <th>Количество</th>
+          <th>Цена</th>
+        </tr>
         </thead>
         <tbody>
-          {% for number, order in all_order_data.items %}
-          <tr>
-            <td rowspan="{{ order|length}}">
-              <span>#{{ number|cut:"Заказ " }}</span>
-            </td>
-            {% for data in order %}
-            {% for product, value in data.items %}
-            <td>{{ product }}</td>
-            <td>{{ value.quantity }}</td>
-            <td class="num">{{ value.price }} руб.</td>
-          </tr>
-          {% endfor %}
-          {% endfor %}
-          {% endfor %}
+        {% for number, order in all_order_data.items %}
+        <tr>
+          <td rowspan="{{ order|length}}">
+            <span>#{{ number|cut:"Заказ " }}</span>
+          </td>
+          {% for data in order %}
+          {% for product, value in data.items %}
+          <td>{{ product }}</td>
+          <td>{{ value.quantity }}</td>
+          <td class="num">{{ value.price }} руб.</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+        {% endfor %}
         </tbody>
       </table>
     </div>

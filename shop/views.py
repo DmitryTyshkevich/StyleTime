@@ -18,12 +18,12 @@ def products_all(request):
     cart_product_form = CartAddProductFormV2()
 
     price = request.GET.get('sort_price')
-    type_mechanism = request.GET.getlist('type')
+    mechanism_type = request.GET.getlist('type')
     case_material = request.GET.getlist('case_material')
     bracelet = request.GET.getlist('bracelet_material')
     glass = request.GET.getlist('glass')
 
-    if not type_mechanism and not bracelet and not glass \
+    if not mechanism_type and not bracelet and not glass \
             and not case_material and not price:
 
         page_obj = pagination(request, products)
@@ -34,7 +34,7 @@ def products_all(request):
                 'cart_product_form': cart_product_form
             }
         )
-    elif not type_mechanism and not bracelet and not glass \
+    elif not mechanism_type and not bracelet and not glass \
             and not case_material:
         products = products.order_by(price)
 
@@ -48,7 +48,7 @@ def products_all(request):
         )
 
     else:
-        features = Features.objects.filter(type__in=type_mechanism) \
+        features = Features.objects.filter(mechanism_type__in=mechanism_type) \
             | Features.objects.filter(case_material__in=case_material) \
             | Features.objects.filter(bracelet_material__in=bracelet) \
             | Features.objects.filter(glass__in=glass)
@@ -74,12 +74,12 @@ def catalogue(request, producer):
     cart_product_form = CartAddProductFormV2()
 
     price = request.GET.get('sort_price')
-    type_mechanism = request.GET.getlist('type')
+    mechanism_type = request.GET.getlist('type')
     case_material = request.GET.getlist('case_material')
     bracelet = request.GET.getlist('bracelet_material')
     glass = request.GET.getlist('glass')
 
-    if not type_mechanism and not bracelet and not glass \
+    if not mechanism_type and not bracelet and not glass \
             and not case_material and not price:
         page_obj = pagination(request, products)
         return render(
@@ -90,7 +90,7 @@ def catalogue(request, producer):
                 'cart_product_form': cart_product_form
             }
         )
-    elif not type_mechanism and not bracelet and not glass \
+    elif not mechanism_type and not bracelet and not glass \
             and not case_material:
         products = products.order_by(price)
         # page_obj = pagination(request, products)
@@ -102,7 +102,7 @@ def catalogue(request, producer):
                       }
                       )
     else:
-        features = (Features.objects.filter(type__in=type_mechanism)
+        features = (Features.objects.filter(mechanism_type__in=mechanism_type)
                     | Features.objects.filter(case_material__in=case_material)
                     | Features.objects.filter(bracelet_material__in=bracelet)
                     | Features.objects.filter(glass__in=glass)) \

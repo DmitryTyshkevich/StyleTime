@@ -29,26 +29,25 @@ def search(request):
 
 
 def filtered_search(request, text):
-    search_text = text
     products = Product.objects.filter(model__icontains=text)
     cart_product_form = CartAddProductFormV2()
     price = request.GET.get('sort_price')
-    type_mechanism = request.GET.getlist('type')
+    mechanism_type = request.GET.getlist('type')
     case_material = request.GET.getlist('case_material')
     bracelet = request.GET.getlist('bracelet_material')
     glass = request.GET.getlist('glass')
 
-    if not type_mechanism and not bracelet and not glass \
+    if not mechanism_type and not bracelet and not glass \
             and not case_material and not price:
         return render(
             request, 'search/search_result.html',
             {
                 'products': products,
                 'cart_product_form': cart_product_form,
-                'search_text': search_text
+                'search_text': text
             }
         )
-    elif not type_mechanism and not bracelet and not glass \
+    elif not mechanism_type and not bracelet and not glass \
             and not case_material:
         products = products.order_by(price)
         return render(
@@ -56,11 +55,11 @@ def filtered_search(request, text):
             {
                 'products': products,
                 'cart_product_form': cart_product_form,
-                'search_text': search_text
+                'search_text': text
             }
         )
     else:
-        features = (Features.objects.filter(type__in=type_mechanism)
+        features = (Features.objects.filter(mechanism_type__in=mechanism_type)
                     | Features.objects.filter(case_material__in=case_material)
                     | Features.objects.filter(bracelet_material__in=bracelet)
                     | Features.objects.filter(glass__in=glass)) \
@@ -73,6 +72,6 @@ def filtered_search(request, text):
             {
                 'products': all_products,
                 'cart_product_form': cart_product_form,
-                'search_text': search_text
+                'search_text': text
             }
         )

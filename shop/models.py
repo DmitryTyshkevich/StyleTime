@@ -35,7 +35,7 @@ class Product(models.Model):
 
 class Features(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    type = models.CharField(max_length=155)
+    mechanism_type = models.CharField(max_length=155)
     waterproof = models.CharField(max_length=50)
     weight = models.IntegerField()
     dimensions = models.CharField(max_length=50)
@@ -46,4 +46,4 @@ class Features(models.Model):
     glass = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.type
+        return self.product.model

@@ -1,5 +1,6 @@
 from django.db import models
 from shop.models import Product
+from django.core.validators import RegexValidator
 
 
 class Order(models.Model):
@@ -10,7 +11,9 @@ class Order(models.Model):
     city = models.CharField("Город", max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    phone = models.CharField('Телефон', max_length=13)
+    phoneNumberRegex = RegexValidator(regex=r'^\+375\d{2}\s\d{3}-\d{2}-\d{2}$')
+    # Для валидации номера телефона
+    phone = models.CharField('Телефон', max_length=16, validators=[phoneNumberRegex])
     paid = models.BooleanField(default=False)
 
     class Meta:
