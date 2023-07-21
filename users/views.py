@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from orders.models import Order, OrderItem
 from .models import Profile
+import os
 
 
 def register(request):
@@ -33,6 +34,7 @@ def profile(request, username):
     product = Product.objects.all()
     all_order_data = {}
     prof = Profile.objects.get(user=user)
+    path = f'media/{str(prof.image)}'
 
     for item in order_items:
         all_order_data[str(item)] = all_order_data.get(str(item), [])
@@ -49,6 +51,8 @@ def profile(request, username):
     all_order_data = dict(reversed(all_order_data.items()))
 
     if request.method == 'POST':
+        if prof.image != 'profile_pics/default.jpg':
+            os.remove(path)
         form = ProfileForm(request.POST, request.FILES, instance=prof)
         if form.is_valid():
             form.save()
