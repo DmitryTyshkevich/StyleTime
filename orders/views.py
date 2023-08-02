@@ -7,8 +7,11 @@ from smtplib import SMTPDataError
 
 
 def order_create(request):
+    """Представление для создания заказа"""
     cart = Cart(request)
+    # Получаем текущую корзину
     if not request.user.is_authenticated:
+        # Записываем данные заказа для неавторизованного покупателя
         if request.method == 'POST':
             form = OrderCreateForm(request.POST)
             if cart:
@@ -17,7 +20,7 @@ def order_create(request):
                     for item in cart:
                         OrderItem.objects.create(order=order,
                                                  product=item['product'],
-                                                 price=item['price'],
+                                                 price=item['price'] * item['quantity'],
                                                  quantity=item['quantity'])
                     # очистка корзины
                     cart.clear()
@@ -26,6 +29,7 @@ def order_create(request):
                         return redirect('orders:order_created', pk=order.id)
                     except SMTPDataError:
                         return redirect('orders:order_created', pk=order.id)
+                    # Отправка сообщения на email
 
             else:
                 return render(request, 'cart/cart_empty.html')
@@ -35,6 +39,7 @@ def order_create(request):
         return render(request, 'orders/create.html',
                       {'cart': cart, 'form': form})
     else:
+        # Записываем данные заказа для авторизованного покупателя
         if request.method == 'POST':
             form = OrderCreateAuthUser(request.POST)
             if cart:
@@ -52,7 +57,7 @@ def order_create(request):
                     for item in cart:
                         OrderItem.objects.create(order=order,
                                                  product=item['product'],
-                                                 price=item['price'],
+                                                 price=item['price'] * item['quantity'],
                                                  quantity=item['quantity'])
                     # очистка корзины
                     cart.clear()
@@ -61,6 +66,7 @@ def order_create(request):
                         return redirect('orders:order_created', pk=order.id)
                     except SMTPDataError:
                         return redirect('orders:order_created', pk=order.id)
+                    # Отправка сообщения на email
             else:
                 return render(request, 'cart/cart_empty.html')
 
@@ -71,4 +77,6 @@ def order_create(request):
 
 
 def order_created(request, pk):
+    """Представление для отображения страницы
+    после успешного оформления заказа"""
     return render(request, 'orders/created.html', {'id': pk})

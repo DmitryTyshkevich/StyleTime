@@ -11,9 +11,9 @@ class Order(models.Model):
     city = models.CharField("Город", max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    phoneNumberRegex = RegexValidator(regex=r'^\+375\d{2}\s\d{3}-\d{2}-\d{2}$')
+    phoneNumberRegex = RegexValidator(regex=r'^\+375\s\d{2}\s\d{3}-\d{2}-\d{2}$')
     # Для валидации номера телефона
-    phone = models.CharField('Телефон', max_length=16, validators=[phoneNumberRegex])
+    phone = models.CharField('Телефон', max_length=17, validators=[phoneNumberRegex])
     paid = models.BooleanField(default=False)
 
     class Meta:
@@ -37,6 +37,3 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return str(self.order)
-
-    def get_cost(self):
-        return self.price * self.quantity

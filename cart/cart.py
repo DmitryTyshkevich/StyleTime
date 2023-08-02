@@ -3,7 +3,7 @@ from django.conf import settings
 from shop.models import Product
 
 
-class Cart(object):
+class Cart:
     """
     Класс для управления корзиной покупок
     """
@@ -74,8 +74,9 @@ class Cart(object):
         """
         Подсчет стоимости товаров в корзине.
         """
-        return sum(Decimal(item['price']) * item['quantity'] for item in
-                   self.cart.values())
+        return sum(
+            Decimal(item['price']) * item['quantity'] for item in self.cart.values()
+        )
 
     def clear(self):
         # удаление корзины из сессии

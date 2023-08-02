@@ -6,25 +6,31 @@ from .forms import CartAddProductFormV1, CartAddProductFormV2
 
 
 @require_POST
-# Мы используем декоратор require_POST, чтобы разрешить только POST запросы,
+# Декоратор для того, чтобы разрешить только POST запросы,
 # поскольку это представление изменит данные.
 def cart_add(request, pk):
+    """
+    Представление для добавления продуктов в корзину 
+    или обновления количества для существующих продуктов
+    """
     cart = Cart(request)
     product = get_object_or_404(Product, pk=pk)
-    # producer = product.model.split()[0]
     form = CartAddProductFormV1(request.POST) \
-           or CartAddProductFormV2(request.POST)
+        or CartAddProductFormV2(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
 
-    # return redirect('shop:watch', producer=producer, pk=pk)
     return redirect(request.META.get('HTTP_REFERER', '/'))
+    # Для перенаправления пользователя на предыдущую страницу, которую он
+    # посещал. Если HTTP-заголовок запроса не существует, то пользователь
+    # будет перенаправлен на корневой URL-адрес.
 
 
 def cart_remove(request, pk):
+    """Представление для удаления товаров из корзины"""
     cart = Cart(request)
     product = get_object_or_404(Product, pk=pk)
     cart.remove(product)
@@ -32,6 +38,7 @@ def cart_remove(request, pk):
 
 
 def cart_detail(request):
+    """Представление для отображения корзины и ее товаров"""
     cart = Cart(request)
     if cart:
         return render(request, 'cart/detail.html', {'cart': cart})

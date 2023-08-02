@@ -1,15 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from shop.models import Product
 from .forms import UserRegisterForm, ProfileForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from orders.models import Order, OrderItem
 from .models import Profile
 import os
 
 
 def register(request):
+    """Представление для регистрации пользователя"""
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -28,22 +27,21 @@ def register(request):
 # для обеспечения ограничение доступа к профилям для
 # незарегистрированных пользователей
 def profile(request, username):
-    user = User.objects.get(username=username)
-    orders = Order.objects.filter(email=user.email)
+    """Представление для личного кабинета"""
+    orders = Order.objects.filter(email=request.user.email)
     order_items = OrderItem.objects.filter(order__in=orders)
-    product = Product.objects.all()
+    path = f'media/{request.user.profile.image}'
     all_order_data = {}
-    prof = Profile.objects.get(user=user)
-    path = f'media/{str(prof.image)}'
 
     for item in order_items:
+        # Формируем словарь с историей заказов
         all_order_data[str(item)] = all_order_data.get(str(item), [])
         all_order_data[str(item)].append(
             {
-                product.get(
-                    id=item.product_id).model: {
+                item.product.model: {
                     'price': str(item.price),
                     'quantity': item.quantity
+
                 }
             }
         )
@@ -51,12 +49,13 @@ def profile(request, username):
     all_order_data = dict(reversed(all_order_data.items()))
 
     if request.method == 'POST':
-        if prof.image != 'profile_pics/default.jpg':
+        # Изменяем изображение пользователя
+        if request.user.profile.image != 'profile_pics/default.jpg':
             os.remove(path)
-        form = ProfileForm(request.POST, request.FILES, instance=prof)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            return redirect('users:profile', username=user.username)
+            return redirect('users:profile', username=username)
     else:
         form = ProfileForm()
         return render(

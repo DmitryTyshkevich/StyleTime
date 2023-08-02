@@ -4,6 +4,7 @@ from shop.models import Product, Features
 
 
 def search(request):
+    """Представление для отображения товара согласна поискового запроса"""
     cart_product_form = CartAddProductFormV2()
     search_text = request.GET['text']
     if search_text:
@@ -29,6 +30,8 @@ def search(request):
 
 
 def filtered_search(request, text):
+    """Представление для отображение отфильтрованного товара
+    согласно поискового запроса"""
     products = Product.objects.filter(model__icontains=text)
     cart_product_form = CartAddProductFormV2()
     price = request.GET.get('sort_price')

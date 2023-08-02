@@ -1,14 +1,13 @@
-from cProfile import label
-
 from django import forms
 from django.core.validators import RegexValidator
-
 from .models import Order
 
 
 class OrderCreateForm(forms.ModelForm):
+    """Форма оформления заказа для неавторизованного пользователя."""
+
     phone = forms.CharField(
-        label='Телефон (+375XX XXX-XX-XX)',
+        label='Телефон (+375 XX XXX-XX-XX)',
         widget=forms.TextInput(attrs={'class': 'form-control'})
     )
 
@@ -27,11 +26,14 @@ class OrderCreateForm(forms.ModelForm):
 
 
 class OrderCreateAuthUser(forms.Form):
-    phoneNumberRegex = RegexValidator(regex=r'^\+375\d{2}\s\d{3}-\d{2}-\d{2}$')
+    """Форма оформления заказа для авторизованного пользователя."""
+
+    phoneNumberRegex = RegexValidator(regex=r'^\+375\s\d{2}\s\d{3}-\d{2}-\d{2}$')
+    # Для валидации номера телефона
     phone = forms.CharField(
-        max_length=16, widget=forms.TextInput(
+        max_length=17, widget=forms.TextInput(
             attrs={'class': 'form-control'}),
-        label='Телефон (+375XX XXX-XX-XX)',
+        label='Телефон (+375 XX XXX-XX-XX)',
         validators=[phoneNumberRegex]
     )
     city = forms.CharField(

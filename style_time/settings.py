@@ -136,13 +136,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Это ключ, который используется для хранения корзины в сессии пользователя
 CART_SESSION_ID = 'cart'
 
+# Ссылка на стили bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'index'
 # перенаправляет на страницу, которую пользователь увидит после успешной аутентификации
+LOGIN_REDIRECT_URL = 'index'
 
-LOGIN_URL = 'users:login'
 # страница, на которую пользователь будет перенаправлен, если он не был авторизован.
+LOGIN_URL = 'users:login'
+
+# Настройки для отправки сообщений на email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
