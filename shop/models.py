@@ -30,7 +30,7 @@ class Product(models.Model):
         return self.model
 
     class Meta:
-        ordering = ['id']
+        ordering = ['-id']
 
 
 class Features(models.Model):

@@ -24,6 +24,7 @@
 </head>
 
 <body>
+<!--Блок для навигационной панели-->
 <nav class="navbar navbar-expand-lg">
 
   <div class="container-fluid">
@@ -42,24 +43,11 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'shop:products_all' %}">Весь товар</a>
         </li>
-        <!--            <li class="nav-item dropdown">-->
-        <!--              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-        <!--                Бренд-->
-        <!--              </a>-->
-        <!--              <ul class="dropdown-menu">-->
-        <!--                <li><a class="dropdown-item" href="#">Casio</a></li>-->
-        <!--                <li><a class="dropdown-item" href="#">Tissot</a></li>-->
-        <!--                <li><a class="dropdown-item" href="#">Orient</a></li>-->
-        <!--                <li><a class="dropdown-item" href="#">Certina</a></li>-->
-        <!--                <li><a class="dropdown-item" href="#">Hublot</a></li>-->
-        <!--                <li><a class="dropdown-item" href="#">Hamilton</a></li>-->
-        <!--              </ul>-->
       </ul>
       <form class="d-flex" role="search" action="{% url 'search:search' %}">
         <input class="form-control me-2" name="text" type="search" placeholder="Что ищем?" aria-label="Поиск">
         <button class="btn btn-sm btn-light me-4" type="submit">Поиск</button>
       </form>
-      <!--          <button type="button" class="btn btn-outline-primary btn-sm me-4">Вход</button>-->
       {% if user.is_authenticated %}
       <a class="nav-item nav-link me-4" href="{% url 'users:profile' user.username %}">Профиль</a>
       <a class="nav-item nav-link me-4" href="{% url 'users:logout' %}">Выход</a>
@@ -71,7 +59,6 @@
                                                   class="btn btn-outline-light me-4 nav-link active"
                                                   aria-current="page">
       </a>
-      <!--          <button type="button" class="btn btn-primary btn-sm me-3">Корзина</button>-->
 
     </div>
   </div>
@@ -79,7 +66,7 @@
 
 {% block content %}{% endblock %}
 
-
+<!--Блок для пагинации-->
 {% if products %}
 {% if products.has_other_pages %}
 <div class="container">
@@ -113,7 +100,7 @@
 {% endif %}
 {% endif %}
 
-
+<!--Блок для футера-->
 <footer class="bg-light py-3 footer bg-white">
   <hr>
   <ul class="nav justify-content-center border-bottom pb-3 mb-3">
