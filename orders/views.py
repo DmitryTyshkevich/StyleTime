@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .message_sending import message_sending
+# from .message_sending import message_sending
+from .tasks import message_sending
 from .models import OrderItem, Order
 from .forms import OrderCreateForm, OrderCreateAuthUser
 from cart.cart import Cart
@@ -25,7 +26,8 @@ def order_create(request):
                     # очистка корзины
                     cart.clear()
                     try:
-                        message_sending(order)
+                        # message_sending(order)
+                        message_sending.delay(order.id)
                         return redirect('orders:order_created', pk=order.id)
                     except SMTPDataError:
                         return redirect('orders:order_created', pk=order.id)
@@ -62,7 +64,8 @@ def order_create(request):
                     # очистка корзины
                     cart.clear()
                     try:
-                        message_sending(order)
+                        # message_sending(order)
+                        message_sending.delay(order.id)
                         return redirect('orders:order_created', pk=order.id)
                     except SMTPDataError:
                         return redirect('orders:order_created', pk=order.id)

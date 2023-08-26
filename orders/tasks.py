@@ -1,7 +1,14 @@
+from celery import shared_task
 from django.core.mail import send_mail
+from .models import Order
 
 
-def message_sending(order):
+@shared_task
+def message_sending(order_id):
+    """
+    Задача для отправки уведомления по электронной почте при успешном создании заказа.
+    """
+    order = Order.objects.get(id=order_id)
     subject = 'Онлайн-магазин "StyleTime"'
     message = f'Уважаемый {order.first_name}! \
             \nВы успешно разместили заказ! \
