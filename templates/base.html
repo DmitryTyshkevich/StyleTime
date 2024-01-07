@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load shop_tags %}
 <html lang="ru">
 
 <head>
@@ -73,24 +74,24 @@
   <ul class="pagination justify-content-center ">
     {% if products.has_previous %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Предыдущая">
+      <a class="page-link" href="?{% change_params page=products.previous_page_number %}" aria-label="Предыдущая">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     {% endif %}
-    {% for p in products.paginator.page_range %}
-    {% if products.number == p %}
+    {% for page in products.paginator.page_range %}
+    {% if products.number == page %}
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+      <a class="page-link" href="?page={{ page }}">{{ page }}</a>
     </li>
-    {% elif p >= products.number|add:-1 and p <= products.number|add:1 %}
+    {% elif page >= products.number|add:-1 and page <= products.number|add:1 %}
     <li class="page-item"><a class="page-link"
-                             href="?page={{ p }}">{{ p }}</a></li>
+                             href="?{% change_params page=page %}">{{ page }}</a></li>
     {% endif %}
     {% endfor %}
     {% if products.has_next %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ products.next_page_number }}" aria-label=" Следующая">
+      <a class="page-link" href="?{% change_params page=products.next_page_number %}" aria-label=" Следующая">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
