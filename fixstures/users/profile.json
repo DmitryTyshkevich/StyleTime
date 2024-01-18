@@ -1,0 +1,18 @@
+[
+    {
+        "model": "users.profile",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "image": "profile_pics/IMG_20220613_093725_152.jpg"
+        }
+    },
+    {
+        "model": "users.profile",
+        "pk": 19,
+        "fields": {
+            "user": 25,
+            "image": "profile_pics/photo_2021-01-16_08-08-54.jpg"
+        }
+    }
+]

@@ -49,7 +49,7 @@
         <input class="form-control me-2" name="text" type="search" placeholder="Что ищем?" aria-label="Поиск">
         <button class="btn btn-sm btn-light me-4" type="submit">Поиск</button>
       </form>
-      {% if user.is_authenticated %}
+      {% if user.is_authenticated and not user.is_staff %}
       <a class="nav-item nav-link me-4" href="{% url 'users:profile' user.username %}">Профиль</a>
       <a class="nav-item nav-link me-4" href="{% url 'users:logout' %}">Выход</a>
       {% else %}

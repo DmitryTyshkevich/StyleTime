@@ -30,7 +30,8 @@ def profile(request, username):
     """Представление для личного кабинета"""
     orders = Order.objects.filter(email=request.user.email)
     order_items = OrderItem.objects.filter(order__in=orders)
-    path = f'media/{request.user.profile.image}'
+    if request.user.profile.image:
+        path = f'media/{request.user.profile.image}'
     all_order_data = {}
 
     for item in order_items:
@@ -50,7 +51,7 @@ def profile(request, username):
 
     if request.method == 'POST':
         # Изменяем изображение пользователя
-        if request.user.profile.image != 'profile_pics/default.jpg':
+        if request.user.profile.image:
             os.remove(path)
         form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():

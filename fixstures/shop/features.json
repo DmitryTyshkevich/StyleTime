@@ -1,0 +1,914 @@
+[
+    {
+        "model": "shop.features",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 110,
+            "dimensions": "Ш40 x В40",
+            "date_display": "нет",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "керамика",
+            "bracelet_material": "каучук",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 2,
+        "fields": {
+            "product": 2,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 95,
+            "dimensions": "Ш45 x В45",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка смещенная",
+            "case_material": "титан + золото",
+            "bracelet_material": "каучук",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 3,
+        "fields": {
+            "product": 3,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 85,
+            "dimensions": "Ш42 x В42",
+            "date_display": "нет",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка вынесена",
+            "case_material": "розовое золото",
+            "bracelet_material": "розовое золото",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 4,
+        "fields": {
+            "product": 4,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 120,
+            "dimensions": "Ш41 x В41 x Т14мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка смещенная",
+            "case_material": "нержавеющая сталь + керамика",
+            "bracelet_material": "каучук",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 5,
+        "fields": {
+            "product": 5,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 115,
+            "dimensions": "Ш44 x В44 x Т14.5мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка смещенная",
+            "case_material": "керамика",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 6,
+        "fields": {
+            "product": 6,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 150,
+            "dimensions": "Ш47 x В55 x Т10мм",
+            "date_display": "число, день недели",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральна",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 7,
+        "fields": {
+            "product": 7,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 151,
+            "dimensions": "Ш45.8 x В48 x Т10.5мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 8,
+        "fields": {
+            "product": 8,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (20 атм)",
+            "weight": 64,
+            "dimensions": "Ш49 x В51 x Т14мм",
+            "date_display": "число, месяц, день недели",
+            "dial": "аналоговый (стрелки) + цифровой (электронный), формат 12/24 часа, секундная стрелка отсутствует",
+            "case_material": "карбон",
+            "bracelet_material": "пластик",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 9,
+        "fields": {
+            "product": 9,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (20 атм)",
+            "weight": 51,
+            "dimensions": "Ш45.4 x В48.5 x Т11.8мм",
+            "date_display": "день недели, число, вечный календарь, месяц",
+            "dial": "аналоговый + цифровой, формат 12/24 часа, секундная стрелка отсутствует",
+            "case_material": "карбон",
+            "bracelet_material": "пластик",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 10,
+        "fields": {
+            "product": 10,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 96,
+            "dimensions": "Ш57.5 x В50.8 x Т15.8мм",
+            "date_display": "число, день недели, месяц, вечный календарь",
+            "dial": "аналоговый + цифровой, формат 12/24",
+            "case_material": "полимерный пластик",
+            "bracelet_material": "титан + IP покрытие",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 11,
+        "fields": {
+            "product": 11,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR300 (30 атм)",
+            "weight": 150,
+            "dimensions": "Ш45.5 x В45.5 x Т12.8мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральна 3) аналоговый + цифровой",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 12,
+        "fields": {
+            "product": 12,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR30 (3 атм)",
+            "weight": 125,
+            "dimensions": "Ш42 x В42 x Т7.5мм",
+            "date_display": "число",
+            "dial": "Аналоговый, формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 13,
+        "fields": {
+            "product": 13,
+            "mechanism_type": "Кварцевый с солнечной подзарядкой",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 79,
+            "dimensions": "Ш45 x В45 x Т13мм",
+            "date_display": "число, день недели, месяц, вечный календарь, год",
+            "dial": "аналоговый + цифровой, формат 12 и 24 часа, секундная стрелка отсутствует",
+            "case_material": "титан + PVD-покрытие",
+            "bracelet_material": "каучук",
+            "glass": "сапфирово"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 14,
+        "fields": {
+            "product": 14,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 52,
+            "dimensions": "Ш41 x В41 x Т10мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь + PVD покрытие",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 15,
+        "fields": {
+            "product": 15,
+            "mechanism_type": "Механические с ручным заводом",
+            "waterproof": "WR30 (3 атм)",
+            "weight": 78,
+            "dimensions": "Ш42.5 x В42.5 x Т11.57мм",
+            "date_display": "нет",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка отсутствует",
+            "case_material": "розовое золото",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 16,
+        "fields": {
+            "product": 16,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 80,
+            "dimensions": "Ш42 x В45 x Т11.5мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 17,
+        "fields": {
+            "product": 17,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 98,
+            "dimensions": "Ш41 x В41",
+            "date_display": "число",
+            "dial": "аналоговый, формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь + PVD покрытие",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 18,
+        "fields": {
+            "product": 18,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 78,
+            "dimensions": "Ш41 x В41 x Т10мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 19,
+        "fields": {
+            "product": 19,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 115,
+            "dimensions": "Ш42 x В42 x Т11.73мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 20,
+        "fields": {
+            "product": 20,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR330 (33 атм)",
+            "weight": 123,
+            "dimensions": "Ш43 x В43",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12/24 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "каучук",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 21,
+        "fields": {
+            "product": 21,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR200 (20 атм)",
+            "weight": 116,
+            "dimensions": "Ш42 x В42 x Т12мм",
+            "date_display": "число, день недели",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 22,
+        "fields": {
+            "product": 22,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 69,
+            "dimensions": "Ш40.5 x В40.5 x Т12мм",
+            "date_display": "нет",
+            "dial": "аналоговое (стрелки), формат 12-ти часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 23,
+        "fields": {
+            "product": 23,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR30 (3 атм)",
+            "weight": 58,
+            "dimensions": "Ш39 x В39 x Т10мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь + IP покрытие",
+            "bracelet_material": "нержавеющая сталь + IP покрытие",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 24,
+        "fields": {
+            "product": 24,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 117,
+            "dimensions": "Ш43 x В43",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 25,
+        "fields": {
+            "product": 25,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR200 (20 атм)",
+            "weight": 95,
+            "dimensions": "Ш44 x В40",
+            "date_display": "день недели, число",
+            "dial": "аналоговый (стрелки), формат 12 часов, центральная секундная стрелка",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 26,
+        "fields": {
+            "product": 26,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR300 (30 атм)",
+            "weight": 200,
+            "dimensions": "Ш42 x В42 x Т12.5мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 27,
+        "fields": {
+            "product": 27,
+            "mechanism_type": "Механические с ручным заводом",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 105,
+            "dimensions": "Ш42 x В42",
+            "date_display": "число, месяц, день недели",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 28,
+        "fields": {
+            "product": 28,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR300 (30 атм)",
+            "weight": 135,
+            "dimensions": "Ш43 x В43",
+            "date_display": "нет",
+            "dial": "аналоговый (стрелки) , формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 29,
+        "fields": {
+            "product": 29,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 95,
+            "dimensions": "Ш42 x В42",
+            "date_display": "нет",
+            "dial": "аналоговый (стрелки) , формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 30,
+        "fields": {
+            "product": 30,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 97,
+            "dimensions": "Ш44 x В44 x Т13мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка смещенная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 31,
+        "fields": {
+            "product": 31,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 85,
+            "dimensions": "Ш42 x В42 x Т11.4мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 32,
+        "fields": {
+            "product": 32,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 180,
+            "dimensions": "Ш42 x В42 x Т15мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка смещенная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 33,
+        "fields": {
+            "product": 33,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 102,
+            "dimensions": "Ш42 x В42",
+            "date_display": "число, секундомер",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь + PVD покрытие",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 34,
+        "fields": {
+            "product": 34,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 210,
+            "dimensions": "Ш49 x В44 x Т11мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь + PVD покрытие",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 35,
+        "fields": {
+            "product": 35,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 215,
+            "dimensions": "Ш53 x В47 x Т12мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь + IP покрытие",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 36,
+        "fields": {
+            "product": 36,
+            "mechanism_type": "Кварцевый с солнечной подзарядкой",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 212,
+            "dimensions": "Ш41 x В41 x Т10мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь + PVD покрытие",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 37,
+        "fields": {
+            "product": 37,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 68,
+            "dimensions": "Ш42 x В42 x Т10мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка смещенная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "текстиль",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 38,
+        "fields": {
+            "product": 38,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 129,
+            "dimensions": "Ш44 x В44 x Т15мм",
+            "date_display": "число, месяц, вечный календарь",
+            "dial": "аналоговый + цифровой",
+            "case_material": "титан",
+            "bracelet_material": "титан",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 39,
+        "fields": {
+            "product": 40,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 116,
+            "dimensions": "Ш41 x В41 x Т10мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12/24 часа, секундная стрелка смещенная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 40,
+        "fields": {
+            "product": 41,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 121,
+            "dimensions": "Ш43 x В43 x Т9мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 41,
+        "fields": {
+            "product": 42,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 98,
+            "dimensions": "Ш42 x В42 x Т11мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12/24 часа, секундная стрелка смещенная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 42,
+        "fields": {
+            "product": 43,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 169,
+            "dimensions": "Ш43 x В43",
+            "date_display": "число",
+            "dial": "12 часовой, секундная стрелка вынесена в отдельный циферблат",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 43,
+        "fields": {
+            "product": 44,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR200 (20 атм)",
+            "weight": 226,
+            "dimensions": "Ш44 x В44 x Т13.3мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов",
+            "case_material": "титан",
+            "bracelet_material": "титан",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 44,
+        "fields": {
+            "product": 45,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 150,
+            "dimensions": "Ш43 x В43",
+            "date_display": "число, день недели",
+            "dial": "аналоговый",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 45,
+        "fields": {
+            "product": 46,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 147,
+            "dimensions": "Ш45 x В45",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "титан",
+            "bracelet_material": "титан",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 46,
+        "fields": {
+            "product": 48,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR30 (3 атм)",
+            "weight": 136,
+            "dimensions": "Ш44 x В44 x Т14.5мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка смещенная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "каучук + джинса",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 47,
+        "fields": {
+            "product": 47,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 124,
+            "dimensions": "Ш45 x В45",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "керамика",
+            "bracelet_material": "керамика",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 48,
+        "fields": {
+            "product": 39,
+            "mechanism_type": "Механические с автоподзаводом",
+            "waterproof": "WR50 (5 атм)",
+            "weight": 82,
+            "dimensions": "Ш41 x В41 x Т9.8мм",
+            "date_display": "число",
+            "dial": "Аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "сапфировое"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 49,
+        "fields": {
+            "product": 49,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 75,
+            "dimensions": "Ш48 x В43",
+            "date_display": "число",
+            "dial": "Аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 50,
+        "fields": {
+            "product": 50,
+            "mechanism_type": "Кварцевый с солнечной подзарядкой",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 67,
+            "dimensions": "Ш52.4 x В54.6 x Т14.4мм",
+            "date_display": "число, месяц, день недели",
+            "dial": "цифровое",
+            "case_material": "пластик",
+            "bracelet_material": "пластик",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 51,
+        "fields": {
+            "product": 51,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR30 (3 атм)",
+            "weight": 37,
+            "dimensions": "Ш49 x В49 x Т8мм",
+            "date_display": "нет",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральна",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 52,
+        "fields": {
+            "product": 52,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR30 (3 атм)",
+            "weight": 65,
+            "dimensions": "Ш30 x В42 x Т8мм",
+            "date_display": "число, месяц, день недели",
+            "dial": "аналоговое+цифровой, формат 12/24 часов, секундная стрелка отсутствует",
+            "case_material": "нержавеющая сталь",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 53,
+        "fields": {
+            "product": 53,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 75,
+            "dimensions": "Ш54 x В50 x Т12мм",
+            "date_display": "число",
+            "dial": "аналоговый (стрелки), формат 12 часов, секундная стрелка центральная",
+            "case_material": "нержавеющая сталь + IP покрытие",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 54,
+        "fields": {
+            "product": 54,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR30 (3 атм)",
+            "weight": 48,
+            "dimensions": "Ш39 x В34 x Т9.6мм",
+            "date_display": "год, месяц, день недели, число",
+            "dial": "цифровой",
+            "case_material": "полимерный пластик",
+            "bracelet_material": "нержавеющая сталь",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 55,
+        "fields": {
+            "product": 55,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR200 (20 атм)",
+            "weight": 45,
+            "dimensions": "Ш42 x В46",
+            "date_display": "число, день недели, год",
+            "dial": "аналоговый + цифровой",
+            "case_material": "карбон",
+            "bracelet_material": "пластик",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 56,
+        "fields": {
+            "product": 56,
+            "mechanism_type": "Кварцевый с солнечной подзарядкой",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 163,
+            "dimensions": "Ш48 x В51 x Т14мм",
+            "date_display": "число, день недели, месяц, год",
+            "dial": "аналоговый + цифровой",
+            "case_material": "нержавеющая сталь + PVD покрытие",
+            "bracelet_material": "кожаный ремешок",
+            "glass": "минеральное"
+        }
+    },
+    {
+        "model": "shop.features",
+        "pk": 57,
+        "fields": {
+            "product": 57,
+            "mechanism_type": "Кварцевые",
+            "waterproof": "WR100 (10 атм)",
+            "weight": 148,
+            "dimensions": "Ш49 x В52 x Т13мм",
+            "date_display": "число, день недели, месяц, год",
+            "dial": "аналоговый + цифровой",
+            "case_material": "нержавеющая сталь + IP покрытие",
+            "bracelet_material": "нержавеющая сталь + IP покрытие",
+            "glass": "минеральное"
+        }
+    }
+]
