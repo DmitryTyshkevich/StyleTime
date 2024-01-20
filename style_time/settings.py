@@ -96,9 +96,9 @@ WSGI_APPLICATION = 'style_time.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'style_time'),
-        'USER': os.getenv('POSTGRES_USER', 'style_time'),
-        'PASSWORD': os.getenv('POSTGRES_PASS', 'postgres'),
+        'NAME': os.getenv('POSTGRES_DB', 'postgres'),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASS', 'test'),
         'HOST': os.getenv('POSTGRES_HOST', 'db'),
         'PORT': '5432',
     }
