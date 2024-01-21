@@ -39,7 +39,7 @@ def product_filter(mechanism_type, case_material, bracelet, glass, products=None
     return features
 
 
-def q_seqrch(query):
+def q_search(query):
     """Функция поиска"""
     result = Product.objects.filter(
         Q(model__icontains=query) | Q(collection__icontains=query)

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from cart.forms import CartAddProductFormV2
-from utils.utils import pagination, product_filter, q_seqrch
+from utils.utils import pagination, product_filter, q_search
 
 
 def search(request):
@@ -10,7 +10,7 @@ def search(request):
     search_text = request.GET["text"]
 
     if search_text:
-        products = q_seqrch(search_text)
+        products = q_search(search_text)
 
         if products:
             page_obj = pagination(request, products)
@@ -37,7 +37,7 @@ def filtered_search(request, text):
     """Представление для отображение отфильтрованного товара
     согласно поискового запроса"""
 
-    products = q_seqrch(text)
+    products = q_search(text)
     cart_product_form = CartAddProductFormV2()
     price = request.GET.get("sort_price")
     mechanism_type = request.GET.getlist("type")
