@@ -1,6 +1,12 @@
 from django.core.paginator import Paginator
 from django.db.models import Q
-from shop.models import Features
+from shop.models import Features, Product
+from django.contrib.postgres.search import (
+    SearchVector,
+    SearchHeadline,
+    SearchQuery,
+    SearchRank,
+)
 
 
 def pagination(request, products):
@@ -31,3 +37,37 @@ def product_filter(mechanism_type, case_material, bracelet, glass, products=None
         & Features.objects.filter(product__in=products)
     )
     return features
+
+
+def q_seqrch(query):
+    """Функция поиска"""
+    result = Product.objects.filter(
+        Q(model__icontains=query) | Q(collection__icontains=query)
+    )
+    query = SearchQuery(query)
+    # vector = SearchVector("model", "collection")
+
+    # result = (
+    #     Product.objects.annotate(rank=SearchRank(vector, query))
+    #     .filter(rank__gt=0)
+    #     .order_by("-rank")
+    # )
+
+    result = result.annotate(
+        headline=SearchHeadline(
+            "model",
+            query,
+            start_sel='<span style="background-color: yellow;">',
+            stop_sel="</span>",
+        )
+    )
+    result = result.annotate(
+        bodyline=SearchHeadline(
+            "collection",
+            query,
+            start_sel='<span style="background-color: yellow;">',
+            stop_sel="</span>",
+        )
+    )
+
+    return result

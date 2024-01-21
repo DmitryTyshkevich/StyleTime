@@ -28,9 +28,22 @@
               <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model }}" style="width: 60%; height: auto;">
             </a><br>
             <div class="card border-0">
-              <h6 class="card-title"><em>{{ model.model }}</em></h6>
+              <h6 class="card-title"><em>{% if model.headline %}
+                {% autoescape off %}
+                {{ model.headline }} 
+                {% endautoescape %}
+                {% else %}
+                {{model.model}}
+                {% endif %}
+              </em></h6>
               <span>
-                <em>{{ model.collection }}</em>
+                <em>{% if model.bodyline %}
+                  {% autoescape off %}
+                  {{ model.bodyline }} 
+                  {% endautoescape %}
+                  {% else %}
+                  {{model.collection}}
+                  {% endif %}</em>
               </span>
               <h4 class="card-title">{{ model.price }} руб. </h4>
               <form action="{% url 'cart:cart_add' model.pk %}" method="post">

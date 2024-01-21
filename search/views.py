@@ -1,18 +1,17 @@
 from django.shortcuts import render, redirect
 from cart.forms import CartAddProductFormV2
-from shop.models import Product, Features
-from utils.utils import pagination, product_filter
-from django.db.models import Q
+from utils.utils import pagination, product_filter, q_seqrch
 
 
 def search(request):
     """Представление для отображения товара согласна поискового запроса"""
+
     cart_product_form = CartAddProductFormV2()
     search_text = request.GET["text"]
+
     if search_text:
-        products = Product.objects.filter(
-            Q(model__icontains=search_text) | Q(collection__icontains=search_text)
-        )
+        products = q_seqrch(search_text)
+
         if products:
             page_obj = pagination(request, products)
             return render(
@@ -37,7 +36,8 @@ def search(request):
 def filtered_search(request, text):
     """Представление для отображение отфильтрованного товара
     согласно поискового запроса"""
-    products = Product.objects.filter(model__icontains=text)
+
+    products = q_seqrch(text)
     cart_product_form = CartAddProductFormV2()
     price = request.GET.get("sort_price")
     mechanism_type = request.GET.getlist("type")
@@ -65,6 +65,7 @@ def filtered_search(request, text):
     elif not mechanism_type and not bracelet and not glass and not case_material:
         products = products.order_by(price)
         page_obj = pagination(request, products)
+
         return render(
             request,
             "search/search_result.html",
