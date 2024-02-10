@@ -30,8 +30,12 @@ def profile(request, username):
     """Представление для личного кабинета"""
     orders = Order.objects.filter(email=request.user.email)
     order_items = OrderItem.objects.filter(order__in=orders)
-    if request.user.profile.image:
-        path = f'media/{request.user.profile.image}'
+    
+    if not hasattr(request.user, 'profile'):
+        Profile.objects.create(user=request.user)
+    else:
+        if request.user.profile.image:
+            path = f'media/{request.user.profile.image}'
     all_order_data = {}
 
     for item in order_items:
