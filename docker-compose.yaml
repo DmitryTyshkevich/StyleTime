@@ -1,9 +1,20 @@
-version: '3.8'
+version: '3.7'
 
 services:
+  db:
+    image: postgres:14
+    container_name: st_postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: test
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+  
   django:
     build: .
-    container_name:  django
+    container_name:  app
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/usr/src/app
@@ -15,6 +26,7 @@ services:
       - CELERY_BROKER=redis://redis:6379/0
       - CELERY_BACKEND=redis://redis:6379/0
     depends_on:
+      - db
       - redis
 
   celery:

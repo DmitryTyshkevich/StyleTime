@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block title %}Личный кабинет{% endblock title %}
 {% block content %}
@@ -6,7 +7,13 @@
   <div class="row">
     <div class="col-md-3">
       <div class="card border-0 my-2">
-        <img class="card rounded-circle account-img" src="{{ user.profile.image.url }}" alt="Avatar">
+        <img class="card rounded-circle account-img" 
+        {% if user.profile.image %}
+        src="{{ user.profile.image.url }}"
+        {% else %}
+        src="{% static 'profile_image/default.jpg' %}"
+        {% endif %}
+        alt="Avatar">
         <h4 class="text-secondary">{{ user.first_name }} {{ user.last_name }}</h4>
         <div class="card-body">
           <form action="{% url 'users:profile' user.username %}" method="post" enctype="multipart/form-data">
