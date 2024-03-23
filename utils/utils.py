@@ -1,5 +1,7 @@
 from django.core.paginator import Paginator
 from django.db.models import Q
+
+from orders.models import OrderItem
 from shop.models import Features, Product
 from django.contrib.postgres.search import (
     SearchVector,
@@ -34,7 +36,7 @@ def product_filter(mechanism_type, case_material, bracelet, glass, products=None
             | Q(bracelet_material__in=bracelet)
             | Q(glass__in=glass)
         )
-        & Features.objects.filter(product__in=products)
+             & Features.objects.filter(product__in=products)
     )
     return features
 
@@ -71,3 +73,11 @@ def q_search(query):
     )
 
     return result
+
+
+def creating_order(cart, order):
+    for item in cart:
+        OrderItem.objects.create(order=order,
+                                 product=item['product'],
+                                 price=item['price'] * item['quantity'],
+                                 quantity=item['quantity'])

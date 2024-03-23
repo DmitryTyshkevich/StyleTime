@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 # from .message_sending import message_sending
 from .tasks import message_sending
-from .models import OrderItem, Order
+from .models import Order
 from .forms import OrderCreateForm, OrderCreateAuthUser
 from cart.cart import Cart
 from smtplib import SMTPDataError
+
+from utils.utils import creating_order
 
 
 def order_create(request):
@@ -18,11 +20,7 @@ def order_create(request):
             if cart:
                 if form.is_valid():
                     order = form.save()
-                    for item in cart:
-                        OrderItem.objects.create(order=order,
-                                                 product=item['product'],
-                                                 price=item['price'] * item['quantity'],
-                                                 quantity=item['quantity'])
+                    creating_order(cart, order)
                     # очистка корзины
                     cart.clear()
                     try:
@@ -56,11 +54,7 @@ def order_create(request):
 
                     )
                     order.save()
-                    for item in cart:
-                        OrderItem.objects.create(order=order,
-                                                 product=item['product'],
-                                                 price=item['price'] * item['quantity'],
-                                                 quantity=item['quantity'])
+                    creating_order(cart, order)
                     # очистка корзины
                     cart.clear()
                     try:

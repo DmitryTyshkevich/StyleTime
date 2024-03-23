@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from orders.models import *
 
+
 # admin.site.register(Order)
 # admin.site.register(OrderItem)
 
@@ -14,7 +15,7 @@ class CartTabAdmin(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["email","first_name", "last_name", "address", "city"]
+    list_display = ["email", "first_name", "last_name", "address", "city"]
     inlines = [CartTabAdmin]
 
 

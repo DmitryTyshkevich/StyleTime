@@ -76,3 +76,12 @@ table {
     width: 100%;
     text-align: center;
 }
+
+.cart-quantity {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    color: #456b1f;
+    padding: 10px;
+    font-weight: bold;
+}
